@@ -1,0 +1,134 @@
+---
+layout: post
+title: Selenium Framework - Lessons Learnt
+date: '2016-02-05T11:21:00.000-08:00'
+author: David Wardlaw
+tags:
+modified_time: '2016-02-05T11:21:02.623-08:00'
+blogger_id: tag:blogger.com,1999:blog-5184156045713724288.post-8185450020004043771
+blogger_orig_url: https://testingsoftwaretimes.blogspot.com/2016/02/selenium-framework-lessons-learnt.html
+---
+
+Before I start going through the lessons I have learnt whilst in the midst of writing a Selenium Framework I would like to say that I am by no means a 'Hard Core Developer'. By this I mean coding is not my day job and I am not up together with all of the latest coding practices and lingo. Yes I have done some coding in the past but it has usually been with the help of more experienced developers.<br />
+<br />
+There is some debate about automated testing vs manual testing. Automated testing (which I believe should be called automated checking) can compliment a more exploratory testing approach and can provide useful information to the test team about the quality of the software under test. I think there is a market for both types of testing and combined they can teach teams a lot about the software they are producing.<br />
+<b><u><br /></u></b>
+<b><u>Overview</u></b><br />
+The Selenium framework that I have started writing I have done in any spare time I have managed to<br />
+find myself with. As mentioned previously I have done some coding in the past but I am by no means an expert coder. My reason for developing a framework were as follows:<br />
+<br />
+<ul>
+<li>Help me develop my coding skills. In my opinion testers do not need to code but I believe it is a useful skill to have.</li>
+<li>Learn more about coding which will help me when I pair with developers in the future.</li>
+<li>Learn about a web based system (All of my testing is on done on desktop applications)</li>
+<li>Give me first hand experience of what automated testing can offer within the umbrella of testing.</li>
+</ul>
+<br />
+The Framework is written in C# and was using Visual Studio as the IDE. I have done a quick Pluralsight course on selenium but the rest of my knowledge was taken from various technical forums and developers that I work with.<br />
+<br />
+In this post I do make the assumption that the people writing the tests are not the same people that are writing the Framework.<br />
+<h3>
+<b><u><br /></u></b><b><u>Lesson 1 : Use a Base Page Object</u></b></h3>
+<div>
+<b><u><br />
+</u></b></div>
+A Base Page Object will contain any methods and functions that can be used in any other<br />
+page objects that make up your tests. The Base Page Object will contain all of the Selenium syntax and therefore, If selenium gets updated and the changes effect your code the changes only need to be made in this Base Page Object and not in multiple page objects.<br />
+<br />
+Below is an example of the structure I used for the framework which used a Base Page Object:<br />
+<br />
+<b>Base Page Object</b><br />
+<br />
+public void enterText(IWebElement element, string text)<br />
+&nbsp; &nbsp; &nbsp; &nbsp;{<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;element.SendKeys(text);<br />
+&nbsp; &nbsp; &nbsp; &nbsp;}<br />
+<br />
+The Base Page object uses the selenium method sendkeys. &nbsp;Now if sendkeys for whatever reason was updated in Selenium only the Base Page Object would need updating.<br />
+<br />
+<b>Page Object</b><br />
+<br />
+public void enterAddress(string address)<br />
+&nbsp; &nbsp; &nbsp; &nbsp;{<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;this.enterText(this.findElementById("addressTextBox""), address);<br />
+&nbsp; &nbsp; &nbsp; &nbsp;}<br />
+<br />
+In this page object you see that it uses the enterText method from the Base Page Object. Methods in the Page Object should make sense and the name of the methods should give the people writing the tests a good idea what the method does as they will be using the methods from these page objects.<br />
+<br />
+<b>Testing Class</b><br />
+<br />
+&nbsp; &nbsp; &nbsp; this.enterAddress("Address");<br />
+<br />
+The testing class should be as 'un-code' like as possible. It should not be something that can only be read by a seasoned developer.<br />
+<br />
+By using a Base Page Object you are in essence having 3 distinct layers to your Framework.<br />
+<br />
+<h3>
+<b><u>Lesson 2 : Use the field in the Method name</u></b></h3>
+Now this may sound like common sense but it will make the lives of the people that are using the framework much easier. Imagine you have a log in screen with 2 fields; one for username and one<br />
+for password. Now if in the LogIn page object you have the following:<br />
+<br />
+<pre class="brush: csharp">public void enterTextBox1(string text)
+&nbsp; &nbsp; {
+&nbsp; &nbsp; &nbsp; .......
+
+public void enterTextBox2(string text)
+&nbsp; &nbsp; {
+&nbsp; &nbsp; &nbsp; ......
+</pre>
+<br />
+When the test is written it will look something like this:<br />
+<br />
+<pre class="brush: csharp">this.enterTextBox1("JoeBloggs");
+this.enterTextBox2("123456");
+</pre>
+<br />
+<br />
+Now this is not particularly readable and what fields is the text <i>JoeBloggs</i> and <i>123456</i> being entered into?<br />
+<br />
+A far better way to do this would be something like the following:<br />
+<br />
+<pre class="brush: csharp">public void enterUsername(string username)
+&nbsp; &nbsp; {
+&nbsp; &nbsp; &nbsp; .......
+
+public void enterPassword(string password)
+&nbsp; &nbsp; {
+&nbsp; &nbsp; &nbsp; ..........
+</pre>
+<br />
+Now when the test is written it will look something like this:<br />
+<br />
+<pre class="brush: csharp">this.enterUsername("JoeBloggs");
+this.enterPassword("123456);
+</pre>
+<br />
+Now this makes what the methods do a lot clearer and &nbsp;will hopefully make sense to the person who is writing the tests. Also in the future if someone else has to change the code it is obvious what field the code is putting data into. It may take a little extra time and effort to name everything with a sensible name but in the long term the benefits are worth it.<br />
+<b><u><br /></u></b>
+<br />
+<h3>
+<b><u>Lesson 3 :&nbsp;</u></b><b><u>Use the Action in the Method Name</u></b></h3>
+<b><u><br /></u></b>Use the action that the method will perform in the name of the method. If the method enters text then use 'enter' in the method name. If the method clicks a button then use 'click' in the method name. Now this may sound obvious but I think it makes method names so much easier to read and you don't need to look at the methods code to see what it does.<br />
+<br />
+Below are some examples:<br />
+<br />
+<table border="30" bordercolor="#FFFFFF" cellpadding="10" cellspacing="3" style="width: 100%;"><tbody>
+<tr><th>Action of the Method</th>    <th>Example of Method Name </th>   </tr>
+<tr>     <td>entering text into a text box</td>     <td>enterUsername</td>    </tr>
+<tr>     <td>clicking a button</td>      <td>clickOKButton</td>   </tr>
+<tr>     <td>select an option from a combo box</td>     <td>selectComboOption</td>   </tr>
+</tbody></table>
+<br />
+These method names relate to exactly what the method is doing to whatever field it is interacting with. Combine this with the field, button or combobox that the method refers to and you have a clear easy to read method that can be understood by the people writing the tests.<br />
+<h3>
+<br /><b><u>Lesson 4 :&nbsp;</u></b><b><u>Use the Id of the element you want &nbsp;to work with</u></b></h3>
+<div>
+<div>
+<b><u><br /></u></b></div>
+Now there are many ways in which you can find an element on a page, such as; Name, Id and Link Text. Ideally you want something that is unique to that particular element so that you know that you are interacting with that element. The best example of this is the id of the element as this is unique across the website. Imagine if you use the Link Text to find an element. What happens if that link text is changed? Your test will fail because it cant be found, This will make your tests brittle and flaky.Although the Id cannot always be used always try to make sure that you pick an element that has the least chance of being changed.<br />
+<br />
+Now I appreciate some of these lessons are pretty obvious to the more experienced developer but I think they are useful all the same. I'm sure I will come up with some more as my Framework grows :)</div>
+<div>
+<br /></div>
+<div>
+Please feel free to comment.&nbsp;</div>

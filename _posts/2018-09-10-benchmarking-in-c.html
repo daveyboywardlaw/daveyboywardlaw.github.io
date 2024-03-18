@@ -1,0 +1,113 @@
+---
+layout: post
+title: Benchmarking in C#
+date: '2018-09-10T09:42:00.000-07:00'
+author: David Wardlaw
+tags:
+modified_time: '2018-09-18T03:12:06.385-07:00'
+thumbnail: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOtTa6Rxep6aBlkB817n19scPrbSFYUQcko_lMHMPr8aBYOsDyaM0ONgHLjDfzV4DqqEPY2pusV6t1aKZmJuYsksGWLiDQa_aMFSHMmNkCRBJwJNU97CwHkIpTWetdjLa0CggUurwZW8o/s72-c/Create+Benchmarking+project1.PNG
+blogger_id: tag:blogger.com,1999:blog-5184156045713724288.post-6368693221695449165
+blogger_orig_url: https://testingsoftwaretimes.blogspot.com/2018/09/benchmarking-in-c.html
+---
+
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">A bit of a change to my normal blog posts this time.... In the next few posts I will be talking about benchmark testing and in particular a NuGet package that allows you to run bench-marking tests in a .NET environment.&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span> <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">So in this post I will demonstrate&nbsp;how you can use a NuGet package to measure the time it takes to open notepad on your local machine.&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span> <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">This will be the starting point and I am aiming to build up some more complex examples as I learn about the NuGet package.&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span> <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">So here goes.......</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span> <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">The NuGet package is called BenchMarkDotNet and is a powerful library&nbsp;for bench-marking&nbsp;various tasks.&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span> <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">The GitHub page can be found here:</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><a href="https://www.blogger.com/goog_993716773"><br />
+</a></span> <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><a href="https://github.com/dotnet/BenchmarkDotNet">https://github.com/dotnet/BenchmarkDotNet</a></span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span> <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">So to use this package, the first thing you need to do is create a new Console App (.NET Framework) project in Visual Studio&nbsp;</span><br />
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOtTa6Rxep6aBlkB817n19scPrbSFYUQcko_lMHMPr8aBYOsDyaM0ONgHLjDfzV4DqqEPY2pusV6t1aKZmJuYsksGWLiDQa_aMFSHMmNkCRBJwJNU97CwHkIpTWetdjLa0CggUurwZW8o/s1600/Create+Benchmarking+project1.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="327" data-original-width="616" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOtTa6Rxep6aBlkB817n19scPrbSFYUQcko_lMHMPr8aBYOsDyaM0ONgHLjDfzV4DqqEPY2pusV6t1aKZmJuYsksGWLiDQa_aMFSHMmNkCRBJwJNU97CwHkIpTWetdjLa0CggUurwZW8o/s1600/Create+Benchmarking+project1.PNG" /></a></div>
+<div class="separator" style="clear: both; text-align: center;">
+<br /></div>
+<div class="separator" style="clear: both; text-align: left;">
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">You then need to add the NuGet package to the project (You should find the NuGet package if you search for 'BenchMarkDotNet'):</span></div>
+<div class="separator" style="clear: both; text-align: left;">
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span></div>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhzMW2W9QaQIC_-1TxACZ1IivWmzxda_6k6Hm_Z5lRHN51GbdKkyphxkiSGiMU54bLsK6BIiulHywsoEt1Xkkm-44abXxOBw-V5WS53u1Dz1b_QgGQKCkPfWv6QLREW7P0fKSUbiY9AnI8/s1600/NuGet.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="959" data-original-width="1249" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhzMW2W9QaQIC_-1TxACZ1IivWmzxda_6k6Hm_Z5lRHN51GbdKkyphxkiSGiMU54bLsK6BIiulHywsoEt1Xkkm-44abXxOBw-V5WS53u1Dz1b_QgGQKCkPfWv6QLREW7P0fKSUbiY9AnI8/s1600/NuGet.PNG" /></a></div>
+<div class="separator" style="clear: both; text-align: left;">
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span></div>
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">At the time of writing the latest version is v0.11.1</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Once you have done this you need to create 2 classes. One will contain the code that runs the test while the other&nbsp;one will contain the&nbsp;</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">the code that defines the benchmark test</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">. So in my example I have the following:</span><br />
+<br />
+<ul>
+<li><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Program.cs - This will contain the code that runs the benchmark test.</span></li>
+<li><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">MyFirstBenchMark.cs - This class contains the code that defines the benchmark test.</span></li>
+</ul>
+<br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Below are the contents of my classes:</span><br />
+<b><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span> <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Program.cs</span></b><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span> <br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjFq55c-gVgQ7eew50kVsyJr5mY_7iMKB1libkaMEtVHJSKI9B5Q2scVViOPLkgQncH0A75yyOV9FG03heRtJPO2AXeT1d0nTkyUHqWhOnqVD-ukJzKSnX19elaFBGG5wjOKfJkIdg82-o/s1600/ProgramCS.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="559" data-original-width="888" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjFq55c-gVgQ7eew50kVsyJr5mY_7iMKB1libkaMEtVHJSKI9B5Q2scVViOPLkgQncH0A75yyOV9FG03heRtJPO2AXeT1d0nTkyUHqWhOnqVD-ukJzKSnX19elaFBGG5wjOKfJkIdg82-o/s1600/ProgramCS.PNG" /></a></div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span> <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Now this class is very simple and just contains a couple of lines to run the benchmark test. Note that the Console.ReadKey() method is there to make sure that the console window does not disappear when the test is completed.&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span> <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span> <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><b>MyFirstBenchMark.cs</b></span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span> <br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi4FeHVqAae7Fr12YPsMoXlKyyvHe3My4053rV5WNVWqhtU5k0P55d0bWfMvV71YQSnaB5lLRXLb049Wx7Fw9OSZxkkaFoP1eJenfjULgiQx6RWiqmOvPooUn71hvkdAPZySbfo6NT3Su4/s1600/BenchMarkExploraation.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="1253" data-original-width="1086" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi4FeHVqAae7Fr12YPsMoXlKyyvHe3My4053rV5WNVWqhtU5k0P55d0bWfMvV71YQSnaB5lLRXLb049Wx7Fw9OSZxkkaFoP1eJenfjULgiQx6RWiqmOvPooUn71hvkdAPZySbfo6NT3Su4/s1600/BenchMarkExploraation.PNG" /></a></div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span> <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Now this class is a little more complex and I will delve into the detail in future&nbsp;blog posts, but a few things to note:</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span> <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">1) The SimpleJob attribute is used to parameterise&nbsp;your benchmark test</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">2) The&nbsp;GlobalSetUp attribute should contain code that is run before the benchmark test is run&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">3) The GlobalCleanup attribute contains code that should be run after the benchmark test has been run</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">4) The Benchmark attribute contains a method that runs the benchmark test.</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">This project will:</span><br />
+<ul>
+<li><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Open notepad (A set number of times - defined by the SimpleJob attribute)</span></li>
+<li><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Cleanup the test by closing down all of the instances of notepad.</span></li>
+</ul>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">One thing you need to do is run the project in Release mode and you can do this by changing the Debug drop-down&nbsp;to Release</span></div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhu9Wbo9bsm7E_m_xuG0BcEhfLhe7b_X-nC_L2eDEbdHbGO0NgEjalTbnF0TFm8B1808Sm-FwGhoq8Zg1l6TB0zO5nrTVBWLIJ0iui0E_Rxj3aT3f6lTtLU5Mh80SgxRCXD8HTsxYK7bJ4/s1600/Release+Build.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="176" data-original-width="407" height="172" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhu9Wbo9bsm7E_m_xuG0BcEhfLhe7b_X-nC_L2eDEbdHbGO0NgEjalTbnF0TFm8B1808Sm-FwGhoq8Zg1l6TB0zO5nrTVBWLIJ0iui0E_Rxj3aT3f6lTtLU5Mh80SgxRCXD8HTsxYK7bJ4/s400/Release+Build.png" width="400" /></a></div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span> <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />When you run the project you will be greeted with the following:</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjWTFg51r1CUugXu0sOixyV8lKNQEZVgbwnQ-HxBwCoQ0c6Mxfr_tEV2QGsWiT4mfm-3cOIE3J0D5nfuqGDhGx-KAS5zfLdvrUR0RlFNS5i7qH0IOPFyO_W3aTXTcMvczRSdmIjYHaE6jM/s1600/BenchMarkTest.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="1600" data-original-width="1562" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjWTFg51r1CUugXu0sOixyV8lKNQEZVgbwnQ-HxBwCoQ0c6Mxfr_tEV2QGsWiT4mfm-3cOIE3J0D5nfuqGDhGx-KAS5zfLdvrUR0RlFNS5i7qH0IOPFyO_W3aTXTcMvczRSdmIjYHaE6jM/s1600/BenchMarkTest.PNG" /></a></div>
+<br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Now there is more than what I have shown above as the console will display details of all the tests that were run and you should see notepad being open and closed during the test run. Above, you will see a Mean, Error and Standard Deviation details about the tests that were run. These details are also exported in csv, md and html and can be found in the&nbsp;</span><b style="font-family: &quot;courier new&quot;, courier, monospace;">\bin\Release\BenchmarkDotNet.Artifacts\results </b><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">directory. This is basically the same as above but in a more importable friendly&nbsp;format.&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">So there you go, a quick example of how to run a benchmark test against opening notepad.</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Next time I will explain how the SimpleJob attribute works and what the various parameters do.</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Please feel free to download the project from my GitHub page:</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><a href="https://github.com/daveyboywardlaw/BenchMarkingExploration">https://github.com/daveyboywardlaw/BenchMarkingExploration</a></span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span> <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span> <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span>

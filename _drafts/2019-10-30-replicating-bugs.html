@@ -1,0 +1,60 @@
+---
+layout: post
+title: Replicating Bugs.......
+date: '2019-10-30T09:54:00.000-07:00'
+author: David Wardlaw
+tags:
+modified_time: '2019-10-30T09:54:15.645-07:00'
+blogger_id: tag:blogger.com,1999:blog-5184156045713724288.post-4970209481781693955
+blogger_orig_url: https://testingsoftwaretimes.blogspot.com/2019/10/replicating-bugs.html
+---
+
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Now typically when you want to reproduce anything (I'm not necessarily talking about testing) you tend repeat the steps that you had done previously.</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">So, for example......................</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">I am off to see the greatest football team in the world (That is Southampton if you don't know:)) and I need to catch the train. And the last time&nbsp;</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">I caught the train to the football I arrived at the station at 2 pm and got the 2.05 train. It arrived at Southampton at 2:35 pm and I had a lovely walk to the ground&nbsp;</span><span style="font-family: &quot;courier new&quot;, courier, monospace;">and got there in time for the 3 pm kick off and the food stalls were quiet so I was able to get an over priced burger before I took my seat.&nbsp;</span><br />
+<br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Now in the above scenario, I tried to replicate what I did the last time I caught a train as it was a pleasurable&nbsp;experience and I want to repeat that. After all, why wouldn't&nbsp;I? It makes sense&nbsp;</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">and it's decent heuristic to use in order to get me to the game. However, what happens If I found out that I can replicate the journey by trying something slightly simpler?&nbsp;</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">What happens If I actually get a bus from outside my house that drops me right outside the stadium. The end result is the same but the steps&nbsp;</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">to get there are different.&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">So thinking from a testing perspective, should we do a similar thing when we find a bug? If the aim of testing to to acquire information about the software under test then I think we should.... and I will explain why.&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><b>An Example....</b></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">You are testing a website and you are testing a client details page which allows a user to enter the following address details.</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">House number</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Street Name</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">PostCode/Zipcode</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Country</span><br />
+<br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Now when testing this you notice that when you submit the form with the following:</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">House number - 12345678910</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Street Name -&nbsp; Daves Drives</span><br />
+<span style="font-family: &quot;courier new&quot;, courier, monospace;">postcode of AB12 1AB</span><br />
+<span style="font-family: &quot;courier new&quot;, courier, monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot;, courier, monospace;">Now when you do this there is an error. An unhandled&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">exception occurs and the user cannot submit the&nbsp;</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">form. This isn't great, so you decide to make sure that you can replicate the issue before you raise a bug. So you perform the same steps again and low and behold, the error replicates. So off you go and raise a bug.</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">However, you could potentially be missing something.......</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">When you have raised the bug and assigned it to the developer, they should try and replicate the error and then try and fix it (And hopefully test it :)). So off they go replicate the issue and then fix it. Happy days!!! You get a new&nbsp;</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">release with the fix in and you find that when you enter the same house number and street name you don't get the same error. However, you then enter a house number of 10 you get the same error.</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">This is frustrating but there is a way to mitigate against it. When you are trying to replicate the issue before you raise the bug, try a few combinations instead of just&nbsp;the one that caused the issue. This may take some time but by doing this you may find that the issue sits in a different&nbsp;piece of logic within the code. It could be that the underlying issue is actually caused by a less complex scenario that the one you are seeing it manifested in.&nbsp;</span><br />
+<br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">So imagine&nbsp;</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">the above scenario and you decide to populate the house number field with the following values:</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">10</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">123456789109</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">house number</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">test123</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">9999999999999999999999999</span><br />
+<div>
+<br /></div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">If each of these values caused an unhandled exception you would be able to tell the developer that it fails for all 5 scenarios and detail them in the bug report. This helps the developer in a couple of ways:</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">1) It will hopefully help them narrow down where the problem may exist in the code</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">2) Enables them to add more tests to their test automation to pick up any issues with these values in the future.&nbsp;</span><br />
+<br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">I'm not saying that you spend hours trying different combinations but spending a little time will be beneficial to you and the developer. If the aim of a tester is to acquire information about the software under test then by trying these few extra combinations allows them to gain more information and knowledge about the system that will hopefully help in the future.&nbsp;</span><br />
+<div>
+<br /></div>
