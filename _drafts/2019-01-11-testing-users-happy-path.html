@@ -1,0 +1,98 @@
+---
+layout: post
+title: Testing the Users Happy Path
+date: '2019-01-11T12:57:00.000-08:00'
+author: David Wardlaw
+tags:
+modified_time: '2019-01-11T12:57:59.080-08:00'
+blogger_id: tag:blogger.com,1999:blog-5184156045713724288.post-235112675529189467
+blogger_orig_url: https://testingsoftwaretimes.blogspot.com/2019/01/testing-users-happy-path.html
+---
+
+<br />
+Now you may or may of heard of a type os testing called 'happy path' testing.<br />
+<br />
+In Michael Boltons blog <b><i>"Blog: Very short blog posts (32)&nbsp;The Happy Path"</i></b><i style="font-weight: bold;">&nbsp;</i>&nbsp;he states that:<br />
+<br />
+<br />
+<span style="color: #333333; font-family: &quot;calibri&quot; , &quot;arial&quot; , &quot;helvetica&quot; , sans-serif; font-size: 21.28px;">“Happy path testing” isn’t really testing at all. Following the “happy path” is a&nbsp;</span><em style="color: #333333; font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 21.28px;">demonstration</em><span style="color: #333333; font-family: &quot;calibri&quot; , &quot;arial&quot; , &quot;helvetica&quot; , sans-serif; font-size: 21.28px;">.</span><br />
+<br />
+Now I agree that happy path is a demonstration however I disagree with the statement that it isn't really testing. Providing that the happy path provides me with information about the system then to me it is testing. For this blog post I am going to assume that happy path testing occurs and it involves a tester going though a very simple/standard scenario to make sure that there is no major issues with the software they are testing. Often these may be the first set of tests that you run after you have received a new release, and this is what I usually do - you can argue the merits of this approach but I have found quite a few bugs this way. Hey, for me its a heuristic :)<br />
+<div>
+<br />
+<b>What do I mean by Users Happy Path?</b><br />
+We all test differently and when we do test it may be that we don't use the system the same way as the users. That is why we test using personas and it is also why testing is difficult. One reason foe this is because all users have there own views and options on what makes a quality software product and they often have their own little nuances that they perform when interacting with a system.&nbsp; When performing a task on a system the users happy path will probably be different to a testers happy path.&nbsp;&nbsp;</div>
+<div>
+<br /></div>
+<div>
+Imagine the scenario....</div>
+<div>
+<br /></div>
+<div>
+You are testing a simple form that accepts your personal details.<br />
+<br />
+Now you may perform this test by:<br />
+<ul>
+<li>Enter your first name</li>
+<li>Click into the Last Name field</li>
+<li>Enter your last name</li>
+<li>Click on the address line 1 field</li>
+<li>Enter line 1 of your actual address</li>
+<li>Click on the Town field</li>
+<li>Enter the town where you live</li>
+<li>Click on the Postcode/Zip field</li>
+<li>Enter your postcode or ZIP</li>
+<li>Click the Submit button</li>
+</ul>
+<div>
+<br /></div>
+<div>
+Now to you that may make a lot of sense. It's a simple test where you are entering data and once entered, that data is then submitted off somewhere. Now imagine you are an actual user of the system. They may test it as follows:</div>
+<div>
+<br /></div>
+<div>
+<ul>
+<li>Click on the address line 1 field</li>
+<li>Enter line 1 of your actual address</li>
+<li>Tab to the Town field</li>
+<li>Enter the town where you live</li>
+<li>Tab back to the last name field</li>
+<li>Enter their last name</li>
+<li>Tab back to the first name field</li>
+<li>Enter their first name</li>
+<li>Tab to the Postcode/ZIP field</li>
+<li>Enter their postcode/ZIP</li>
+<li>Tab to the submit button and press enter</li>
+</ul>
+<div>
+Now If everything is working OK you would expect the same result for both tests. However, you are not entering data like the user does so wouldn't it be better to enter the data like they do?</div>
+</div>
+<div>
+<br /></div>
+<div>
+Well of course it would.... :)&nbsp;</div>
+<div>
+<br /></div>
+<div>
+As testers we are not users and we are not quality gatekeepers. We are people who provide information about a product which in turn allows people to make an informed decision about whether the software should be shipped to the customer or not. Now by running these tests the same way as a user will potentially give you the following:</div>
+<div>
+<ul>
+<li>An idea that the system will work in the 'correct' way when the actual users start using it</li>
+<li>The ability to spot unexpected bugs</li>
+</ul>
+<div>
+<b>So how do you find out how a user interacts with the system?</b></div>
+<div>
+Well this can be the difficult bit. Maybe you are in a position to spend time with the users and see how they use the system or maybe you have some analytics you can use. This would require some resource and some time but the benefits to your testing can be worth the effort.</div>
+<div>
+<br /></div>
+<div>
+So when you do happy path/smoke tests try and test like a user. You really should always try and test like a user but that is not always possible. For the really interesting, edge case bugs you find you will probably not necessarily be using the system like the majority of users because if you did you would of probably found it during the happy path.&nbsp;</div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br /></div>

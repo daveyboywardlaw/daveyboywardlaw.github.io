@@ -1,0 +1,97 @@
+---
+layout: post
+title: Monitoring Log Files
+date: '2019-07-08T09:34:00.000-07:00'
+author: David Wardlaw
+tags:
+modified_time: '2019-07-08T09:34:34.048-07:00'
+blogger_id: tag:blogger.com,1999:blog-5184156045713724288.post-3997455532831384886
+blogger_orig_url: https://testingsoftwaretimes.blogspot.com/2019/07/monitoring-log-files.html
+---
+
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Log files are funny things. They&nbsp;can contain lots of useful information but they can also be a frustrating experience to understand and read.&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Typically when an error occurs in an application there will usually be an entry in a log file. So in the current application I am testing, I know that when I see an unhandled exception in the UI there will be an entry in the log file which&nbsp;will tell me why and where the error occurred.</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">So imagine my surprise when during a testing session in which I was&nbsp; looking for a particular entry in a log file, I noticed that there was an error and I realised that at that time I had not noticed any strange or peculiar behaviour in the UI. This got me thinking about how I can find bugs that do not manifest themselves in the UI......&nbsp;&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Now at the time we didn't have any log file analysis tools like Splunk and after seeing the error in the logs I thought it would be a good idea to some how monitor the log files. Now complex enterprise analysis tools like Splunk were a no no so I had to think of something&nbsp;else. I narrowed it down to the following:</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">1) Write my own log file analysis tools using C#</span><br />
+<br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">2) Extend our existing Log4Net configuration</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Option&nbsp;1 was a possibility but having a 2 year old did not give me the time I needed to write one in my spare time, so option 2 was the option I decided to go with.&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Now having no Log4Net experience meant I had to go and do some research. So after speaking to some of the developers and doing a bit of Googling I managed to come up with the changes needed.&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">So before I explain the changes I made here is some background information on Log4Net</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">1) It</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">&nbsp;a tool to help the programmer output log statements to a variety of output targets.</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">2) It has the concept of loggers and these lie at the heart of Log4Nets configuration. Loggers are organised into a hierarchy and give the programmer run-time control on which logging statements are printed or not. Loggers are assigned levels through the configuration of log4net. A log statement is routed through to the appender depending on its level and its logger.</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">3) You can add additional Appenders to create new logging. You need to add an appender so Log4Net knows where to store your log messages.&nbsp;</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">An appender is a C# class that can transform a log message, including its properties, and persist it somewhere</span><br />
+<br />
+<br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">4) Log4Net has different levels of logging and these are:</span><br />
+<ul>
+<li><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">ALL</span></li>
+<li><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">DEBUG</span></li>
+<li><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">INFO</span></li>
+<li><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">WARN</span></li>
+<li><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">ERROR</span></li>
+<li><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">FATAL</span></li>
+<li><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">OFF</span></li>
+</ul>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><b>The changes I made</b><br /><br />So after thinking about what I wanted to achieve out of this I decided to make the following changes:<br /><br />- Write all levels above (and including) WARN to a new log file<br />- Add a new appender to email me when the levels above (and including) WARN occur in the log file. </span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Here is the config that I added:</span><br />
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span></div>
+<br />
+<div style="font-weight: bold;">
+<span style="font-size: x-small;"><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><b>&lt;root&gt;</b></span>&nbsp; &nbsp; &nbsp; &nbsp; &lt;appender name="WarningAndErrorAppender" type="log4net.Appender.RollingFileAppender"&gt;<br /><span style="white-space: pre;"> </span>&lt;filter type="log4net.Filter.LevelRangeFilter"&gt;<br />&nbsp; &nbsp; &nbsp; &nbsp; <span style="white-space: pre;"> </span>&lt;levelMin value="WARN" /&gt;<br />&nbsp; &nbsp; &nbsp; &lt;/filter&gt;<br />&nbsp; &nbsp; &nbsp; &lt;file value="../log/WarningsAndErrors.txt" /&gt;<br />&nbsp; &nbsp; &nbsp; &lt;appendToFile value="true" /&gt;<br />&nbsp; &nbsp; &nbsp; &lt;maxSizeRollBackups value="500" /&gt;<br />&nbsp; &nbsp; &nbsp; &lt;maximumFileSize value="20MB" /&gt;<br />&nbsp; &nbsp; &nbsp; &lt;rollingStyle value="Composite" /&gt;<br />&nbsp; &nbsp; &nbsp; &lt;datePattern value="-yyyy-MM-dd" /&gt;<br />&nbsp; &nbsp; &nbsp; &lt;preserveLogFileNameExtension value="true" /&gt;<br />&nbsp; &nbsp; &nbsp; &lt;staticLogFileName value="true" /&gt;<br />&nbsp; &nbsp; &nbsp; &lt;layout type="log4net.Layout.PatternLayout"&gt;<br />&nbsp; &nbsp; &nbsp; &nbsp; &lt;header value="[Log Start]&amp;#xA;" /&gt;<br />&nbsp; &nbsp; &nbsp; &nbsp; &lt;footer value="[Log End]&amp;#xA;" /&gt;<br />&nbsp; &nbsp; &nbsp; &nbsp; &lt;conversionPattern value="%date [%thread] [%property{user}] [%property{request}] %-5level %logger - %message%newline" /&gt;<br />&nbsp; &nbsp; &nbsp; &lt;/layout&gt;<br />&nbsp; &nbsp; &lt;/appender&gt;<br />&nbsp; &nbsp; &lt;appender name="EmailAppender" type="log4net.Appender.SmtpAppender"&gt;<br /><span style="white-space: pre;"> </span>&lt;filter type="log4net.Filter.LevelRangeFilter"&gt;<br />&nbsp; &nbsp; &nbsp; &nbsp; <span style="white-space: pre;"> </span>&lt;levelMin value="WARN" /&gt;<br />&nbsp; &nbsp; &nbsp; &lt;/filter&gt;<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;to value="&lt;EMail address&gt;" /&gt;<br />&nbsp; &nbsp; <span style="white-space: pre;"> </span>&lt;from value="&lt;EMail address&gt;" /&gt;<br />&nbsp; &nbsp; <span style="white-space: pre;"> </span>&lt;subject value="WARNING OR ERROR IN LOGS" /&gt;<br />&nbsp; &nbsp; <span style="white-space: pre;"> </span>&lt;smtpHost value="&lt;SMTP value&gt;" /&gt;<br />&nbsp; &nbsp; <span style="white-space: pre;"> </span>&lt;bufferSize value="512" /&gt;<br />&nbsp; &nbsp; <span style="white-space: pre;"> </span>&lt;lossy value="false" /&gt;<br />&nbsp; &nbsp; &nbsp; &lt;layout type="log4net.Layout.PatternLayout"&gt;<br />&nbsp; &nbsp; &nbsp; &nbsp; &lt;header value="[Log Start]&amp;#xA;" /&gt;<br />&nbsp; &nbsp; &nbsp; &nbsp; &lt;footer value="[Log End]&amp;#xA;" /&gt;<br />&nbsp; &nbsp; &nbsp; &nbsp; &lt;conversionPattern value="%date [%thread] [%property{user}] [%property{request}] %-5level %logger - %message%newline" /&gt;<br />&nbsp; &nbsp; &nbsp; &lt;/layout&gt;<br />&nbsp; &nbsp; &lt;/appender&gt;<br />&lt;/root&gt;</span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"></span><br />
+<div style="font-size: small; font-weight: bold;">
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span></div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">
+</span>
+<br />
+<div style="font-weight: bold;">
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">So how did this help me?</span></div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">
+</span>
+<ul>
+<li><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Found issues that did not manifest themselves in the UI that otherwise I may not of realised had occurred.</span></li>
+</ul>
+<ul>
+<li><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">When I was notified of an issue in the log file I was more easily able to note down the exact steps that were performed as the email notified me relatively soon after the error in the log file occurred.</span></li>
+</ul>
+<ul>
+<li><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Taught me that you can use an exciting tool to aids testing and that you don't need to buy something in. OK it may not be exactly what you want but if it adds value to your testing then it is worth it.&nbsp;</span></li>
+</ul>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><b>Extending the configuration</b></span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><b><br /></b></span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">I extended this by writing a PowerShell script that makes the changes to the log file automatically. This script was then run during deployment of the application to the sever and it meant that&nbsp; I had extra log file analysis without have to do anything manually.&nbsp;</span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">So there you have it, a simple solution that has added value to my testing and helped catch issues that may not of been immediately obvious.</span></div>
+<div>
+<br /></div>
+<div>
+<br /></div>
+<div>
+<br /></div>
+<div>
+<br /></div>
+<div>
+<br /></div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br /></div>

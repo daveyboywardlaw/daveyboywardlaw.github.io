@@ -1,0 +1,136 @@
+---
+layout: post
+title: Don’t answer a question, ask a question - Estimates and Testing
+date: '2017-12-04T10:11:00.000-08:00'
+author: David Wardlaw
+tags:
+modified_time: '2017-12-04T10:11:27.282-08:00'
+blogger_id: tag:blogger.com,1999:blog-5184156045713724288.post-5179756008110455556
+blogger_orig_url: https://testingsoftwaretimes.blogspot.com/2017/12/dont-answer-question-ask-question.html
+---
+
+<div style="-en-clipboard: true;">
+As a tester you may be asked this question…</div>
+<div>
+<br /></div>
+<div>
+How long will the feature take to test?</div>
+<div>
+<br /></div>
+<div>
+Recently I was asked this and I responded with something like this….</div>
+<div>
+<br /></div>
+<div>
+I can test it in 5 minutes, 5 hours, 5 days, 5 weeks or 5 years.</div>
+<div>
+<br /></div>
+<div>
+Now I hate giving estimates. People tend to take estimates as gospel and hold you to them if you then have to say that the testing may take a little longer. As testers we can test a feature for 5 minutes but we could also test it for 5 years. Trying to get the balance right between having enough time to test the feature and satisfying someone who needs it to be delivered as quickly as possible can be difficult. However I think that we should not be asked how long something takes to test, I think as testers we should be asking a question instead.&nbsp;</div>
+<div>
+<br /></div>
+<div>
+Going back to answering the question “How Long will the feature take to test?”, lets take an example feature and describe what we could test for each of the estimates I gave above.</div>
+<div>
+<br /></div>
+<div>
+Lets say the feature is one where the user can add and remove tasks to a to do list application on a mobile phone (android and IOS) and the items you add and removed are synced to a &nbsp;database on the cloud so you can access them anywhere.</div>
+<div>
+<br /></div>
+<div>
+Below are some of the things you could test for each of the estimates given.&nbsp;</div>
+<div>
+<br /></div>
+<div>
+NOTE: These tasks will be done on both Android and IOS</div>
+<div>
+<br /></div>
+<div>
+<b><i>5 minutes estimate</i></b></div>
+<div>
+Add a task and remove it from a to do list</div>
+<div>
+<br /></div>
+<div>
+<i><b>5 hours estimate</b></i></div>
+<div>
+Add multiple tasks to multiple to do lists and remove them</div>
+<div>
+Add notes with various special characters</div>
+<div>
+<br /></div>
+<div>
+<i><b>5 days estimate</b></i></div>
+<div>
+Add multiple tasks to multiple to do lists and remove them</div>
+<div>
+Add notes with various special characters</div>
+<div>
+Adding and removing tasks in different locations where there may be data coverage issues</div>
+<div>
+<i><b><br />
+</b></i></div>
+<div>
+<span style="line-height: 1.45;"><i><b>5 weeks estimate</b></i></span></div>
+<div>
+Add multiple tasks to multiple to do lists and remove them</div>
+<div>
+Adding and removing tasks in different locations where there may be data coverage issues</div>
+<div>
+Add notes with various special characters</div>
+<div>
+Security testing</div>
+<div>
+performance testing</div>
+<div>
+<i><b><br />
+</b></i></div>
+<div>
+<i><b>5 years estimate</b></i></div>
+<div>
+Add multiple tasks to multiple to do lists and remove them</div>
+<div>
+Adding and removing tasks in different locations where there may be data coverage issues</div>
+<div>
+Add notes with various special characters</div>
+<div>
+Security testing</div>
+<div>
+performance testing</div>
+<div>
+Testing on new versions of the operating systems</div>
+<div>
+<br /></div>
+<div>
+Now the above list is not exhaustive (obviously) but hopefully the get the idea, the greater the estimate the more information we can learn about the product.&nbsp;</div>
+<div>
+<br /></div>
+<div>
+<span style="font-weight: bold;">What estimate is best?</span></div>
+<div>
+There is no best estimate in this example.&nbsp;</div>
+<div>
+<br /></div>
+<div>
+As you can see I could test the application in 5 minutes but the depth of my testing is very shallow and I have just done the bare minimum that would give me a sense that the very basic functionality works. It maybe that when I run this test I will have mobile data coverage and everything will be perfect on my phone and the test passes. Great!!! I can say that all my tests passed and that the feature is ready to go live. What could possibly go wrong?........</div>
+<div>
+<br /></div>
+<div>
+I could test the application in 5 years. That would mean that I would cover new operating systems (which I know is never ending but humour me) and I could really test this thing in depth. However, by the time I have finished testing, the competition have release the best To-Do list app the world has ever seen and as a company we are going to have a hard job in convincing people to switch to our app.&nbsp;</div>
+<div>
+<br /></div>
+<div>
+Each estimate will have its benefits (time, coverage, balance between the two) but no particular one is correct. Estimating is such a subjective ‘thing’ that what one person thinks would be enough time would never be enough for another tester. Why is this? Its because of context (and&nbsp;potential&nbsp;the confidence of the tester in themselves and the feature) and also because I think the question “How long will this take to test?” is incorrect.&nbsp;</div>
+<div>
+<br /></div>
+<div>
+<span style="font-weight: bold;">What should be asked then?</span></div>
+<div>
+As testers we are information providers. And to provide that information we are given a limited amount of time to test a feature or application. This is often due to factors such as testing being squeezed and not enough testers on the project. As time is always something that we never have enough of we should be asking as testers “How much do you want to know about the feature?”&nbsp;</div>
+<div>
+<br /></div>
+<div>
+How do we know how long something is going to take to test if we have no way of knowing what the end goal of the testing is? If we are unable to relate the estimate to any kind of 'definition of done' our&nbsp;estimates&nbsp;could be as long or as short as we are willing (or forced) to make them. This will either put us under&nbsp;enormous&nbsp;pressure to finish all of the testing in the allocated time or feel that the time we spent testing was not long enough to give us a level of confidence that the feature is ready to go out to our users.&nbsp;</div>
+<div>
+<br /></div>
+So think of it like this.... <br /><br />When someone answers the testers question of "How much do you want to know about the feature?" with something like “I want to know that a user can add a note and the feature should stop users from adding notes if there is no data coverage”, we now have something that has been defined that we can use to base our estimates on. This will potentially remove the pressure of too much testing to do in a short period of time and give us the confidence that when the feature goes out to our users it has had enough testing. <br /><br />So if someone asked you how long x take to test, then the question around and ask “How much do you want to know about the feature?"

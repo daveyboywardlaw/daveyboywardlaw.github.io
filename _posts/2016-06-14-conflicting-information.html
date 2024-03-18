@@ -1,0 +1,87 @@
+---
+layout: post
+title: Conflicting Information
+date: '2016-06-14T10:00:00.004-07:00'
+author: David Wardlaw
+tags:
+modified_time: '2016-06-14T10:01:08.747-07:00'
+thumbnail: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6Gf0kOhIF9U8Qe71vDB0K9fXodFiXFztAKhcxSJzziy-PmL49ji6lzuJ-Yj17uk4CP0PESXNm1bfd6uYxYYVmVFgVju7CVwbm_JGzrUr8Y9kvPzHeEksyt8YoLguUVsmN6w0w1nHkhQ8/s72-c/mac+storage.png
+blogger_id: tag:blogger.com,1999:blog-5184156045713724288.post-3534655291993275599
+blogger_orig_url: https://testingsoftwaretimes.blogspot.com/2016/06/conflicting-information.html
+---
+
+<span style="font-family: inherit;">In this blog post I will be talking about testing and conflicting information. Now I am a new Mac user and whilst I was playing around with my new toy a while ago I wanted to see how much storage I had left available. So I went into 'About this Mac' and bought up the storage dialogue box.&nbsp;</span><br />
+<span style="font-family: inherit;"><br /></span>
+<span style="font-family: inherit;">Can you see spot any issues...........?</span><br />
+<div>
+<span style="font-family: inherit;"><br /></span></div>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6Gf0kOhIF9U8Qe71vDB0K9fXodFiXFztAKhcxSJzziy-PmL49ji6lzuJ-Yj17uk4CP0PESXNm1bfd6uYxYYVmVFgVju7CVwbm_JGzrUr8Y9kvPzHeEksyt8YoLguUVsmN6w0w1nHkhQ8/s1600/mac+storage.png" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><span style="font-family: inherit;"><img border="0" height="130" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6Gf0kOhIF9U8Qe71vDB0K9fXodFiXFztAKhcxSJzziy-PmL49ji6lzuJ-Yj17uk4CP0PESXNm1bfd6uYxYYVmVFgVju7CVwbm_JGzrUr8Y9kvPzHeEksyt8YoLguUVsmN6w0w1nHkhQ8/s400/mac+storage.png" width="400" /></span></a></div>
+<div>
+<span style="font-family: inherit;"><br /></span></div>
+<div>
+<span style="font-family: inherit;"><br /></span></div>
+<div>
+<span style="font-family: inherit;"><br /></span></div>
+<div>
+<span style="font-family: inherit;"><br /></span></div>
+<div>
+<span style="font-family: inherit;"><br /></span></div>
+<div>
+<span style="font-family: inherit;"><br /></span></div>
+<div>
+<span style="font-family: inherit;"><br /></span></div>
+<div>
+<span style="font-family: inherit;"><br /></span></div>
+<div>
+<span style="font-family: inherit;"><br /></span></div>
+<div>
+<span style="font-family: inherit;"><br /></span>
+<span style="font-family: inherit;">Now, I did not notice the issues when I first looked at the dialog box as my eye was drawn to the text that stated how much space I had left. I thought "Great, &nbsp;I have loads of space left" as I had over 140 GB of space left. I then had a closer look........</span></div>
+<div>
+<span style="font-family: inherit;"><br /></span></div>
+<div>
+<span style="font-family: inherit;">You will notice that the total amount of space I have left is 140.41 GB but the white space in the space bar (which represents free space) looks a little too short to represent 140.41 GB. Also it states that I have 249.78 GB of space in total but the disk icon text states that I have 251 GB of flash storage.&nbsp;</span></div>
+<div>
+<span style="font-family: inherit;"><br /></span></div>
+<div>
+<span style="font-family: inherit;">All of this tells me that there is some conflicting information being displayed and how do I know which one is correct? Maybe they are both incorrect.&nbsp;</span></div>
+<div>
+<span style="font-family: inherit;"><br /></span>
+<br />
+<div>
+<span style="font-family: inherit;">&nbsp;As testers we can do a few things when we find conflicting information.</span></div>
+<div>
+<div>
+<ul>
+<li><b>Find out if the conflicting information is an issue</b></li>
+</ul>
+<div>
+How do you know this is a problem? Look at and analyse your Oracles and see if any of these will give you an idea as to whether this is an issue or not. Usually (and I'm making an assumption here), when conflicting information is found there will usually be a bug present in the system. I can't think of an example where the same piece of information is represented multiple times with different values is seen as correct. Usually multiple pieces of information that represent the same thing should be consistent and any difference should be investigated.&nbsp;</div>
+<div>
+</div>
+</div>
+<ul>
+<li><b><span style="font-family: inherit;">&nbsp;Find out what piece of information is correct</span></b></li>
+</ul>
+</div>
+<div>
+<span style="font-family: inherit;">Instead of raising an issue stating that the data is conflicting and wrong, digging a little deeper into the data that is wrong can use a useful exercise and can be used by the developer to fix the problem</span><span style="font-family: inherit;">. In my example I could run a third party application that would confirm the actual amount of space that I have left, I could then share this with the developer and this in turn would help then to identify the wrong piece of data. This investigation could potentially take some time and the time spent really should be linked to how severe the effect of the conflicting information is (see below)</span></div>
+<div>
+<ul>
+<li><b><span style="font-family: inherit;">&nbsp;Evaluate how severe the effects of the difference could be</span></b></li>
+</ul>
+</div>
+<div>
+<span style="font-family: inherit;">How severe is the effect of the data difference? It may not be too much of an issue if the conflicting information is small. So in my example if the difference was say 0.5 MB then this could be seen as not particularly severe. On the other hand a small difference could be very severe. I</span>magine a medical piece of machinery that gives doses of a drug to a patient at set times every hour. Now If this was tested and the amount that was actually given was different to the amount that was configured to be administered, the consequences could be fatal. So small variances in information does not mean that the conflicting data does not matter.<br />
+<span style="font-family: inherit;"><br /></span>
+<span style="font-family: inherit;">&nbsp;</span><span style="font-family: inherit;">We should be alert to conflicting information, although this can be difficult due to the potential subtleness of the difference and also we need to be aware of how severe this difference could be, s</span>o like most things testing, it is all about context.</div>
+</div>
+<div>
+<br /></div>
+<div>
+<span style="font-family: inherit;">If you have any thoughts on this please feel free to comment.&nbsp;</span></div>
+<div>
+<span style="font-family: inherit;"><br /></span></div>
+<div>
+<br /></div>
