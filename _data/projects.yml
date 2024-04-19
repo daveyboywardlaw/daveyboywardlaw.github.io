@@ -1,12 +1,12 @@
 - name: Testing Tools
   image: https://cdn.pixabay.com/photo/2015/01/08/18/27/startup-593341_960_720.jpg
-  link: https://github.com/daveyboywardlaw/TestingTools
+  link: 
   description: This repository contains various useful pieces of C# code that can be used for testing
 - name: Playwright UI Testing
-  link: https://github.com/daveyboywardlaw/PlaywrightUITesting
+  link: 
   image: https://cdn.pixabay.com/photo/2015/01/09/11/08/startup-594090_960_720.jpg
   description: Repository to show UI testing of the site https://ecommerce-playground.lambdatest.io/
 - name: Bench Marking
-  link: https://github.com/daveyboywardlaw/BenchMarkingExploration
+  link: 
   image: https://cdn.pixabay.com/photo/2016/06/25/12/55/art-1478831_960_720.jpg
   description: Repository for showing how BenchMark NuGet package can work
