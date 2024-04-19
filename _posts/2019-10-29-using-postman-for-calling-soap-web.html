@@ -1,0 +1,88 @@
+---
+layout: post
+title: Using Postman for calling a SOAP Web Service
+date: '2019-10-29T09:47:00.000-07:00'
+author: David Wardlaw
+tags:
+modified_time: '2019-10-29T09:47:00.281-07:00'
+thumbnail: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZFlt12SJtT7elQmMrMmLJaAzlNLfKq_QzebiGqaC4ZTYgvvW2JKnnbfHiprcMMbvLNHyik8VsptOaLZYUeaYsBp8IoifR4AJr5QeS1boFGWtvGSM3VHYwbYzw_Xp8ozcr-_cRfUHWKCs/s72-c/Postman+SOAP+Web+Request+Screenshot+1.png
+blogger_id: tag:blogger.com,1999:blog-5184156045713724288.post-8791741749065803514
+blogger_orig_url: https://testingsoftwaretimes.blogspot.com/2019/10/using-postman-for-calling-soap-web.html
+---
+
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">So testing Web Services&nbsp;and REST APIs is not something that I have regularly spent a great deal of time doing (although I have done some). However, a change to a customers requirements meant that I had the opportunity to test a SOAP Web Service in a little more depth. Now I have used Postman&nbsp;to test Rest APIs but I had not used it to test SOAP Web Services. I wasn't sure If I could do it but I thought I would give it a go...&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><b><br /></b></span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">So in this post I will show how you can use Postman to test a SOAP Web Services via the postman UI and the sendRequest method.</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><b><br /></b></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><b>So what did I do?</b></span><br />
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">The service I will use for this blog post is one provided by W3schools which converted Celsius to Fahrenheit and Visa Versa. Here it is :)&nbsp;</span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><b><br /></b></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><a href="https://www.w3schools.com/xml/tempconvert.asmx">https://www.w3schools.com/xml/tempconvert.asmx</a></span><br />
+<br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">So first of all I had to work out how to call a SOAP Web Service using postman. So a quick look on the Postman web site and I found that I needed to:</span><br />
+<br />
+<ul>
+<li><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">&nbsp;Set the URL to be the Soap Endpoint</span></li>
+<li><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">&nbsp;Set the request method to POST</span></li>
+<li><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">&nbsp;Open the Raw editor and set the body type as text/xml</span></li>
+<li><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">&nbsp;Enter the SOAP message in the request body</span></li>
+</ul>
+<br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">So my request looks like this:</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZFlt12SJtT7elQmMrMmLJaAzlNLfKq_QzebiGqaC4ZTYgvvW2JKnnbfHiprcMMbvLNHyik8VsptOaLZYUeaYsBp8IoifR4AJr5QeS1boFGWtvGSM3VHYwbYzw_Xp8ozcr-_cRfUHWKCs/s1600/Postman+SOAP+Web+Request+Screenshot+1.png" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img border="0" data-original-height="471" data-original-width="1600" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZFlt12SJtT7elQmMrMmLJaAzlNLfKq_QzebiGqaC4ZTYgvvW2JKnnbfHiprcMMbvLNHyik8VsptOaLZYUeaYsBp8IoifR4AJr5QeS1boFGWtvGSM3VHYwbYzw_Xp8ozcr-_cRfUHWKCs/s1600/Postman+SOAP+Web+Request+Screenshot+1.png" /></a></div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">However, this did not work. The content-type key in the header of my request was defaulted to application/xml and I had to change it to text/xml. After changing this I got a response.&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Here it is:</span><br />
+<br />
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjC_OYX2SEVdvF1Rfq24FeqSvk67msOyNfv0Hx3MyiAmfRNVtoHAWW1FmnntzThX7l3ncxa39bFsMq9OcXxUIlL9C7Y1bfmNoQeVssYwMfu0PXuDi5VdJ44_nNt1AofreVHrxxmk5F6Evw/s1600/Postman+SOAP+Web+Request+Screenshot+4.png" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img border="0" data-original-height="733" data-original-width="1401" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjC_OYX2SEVdvF1Rfq24FeqSvk67msOyNfv0Hx3MyiAmfRNVtoHAWW1FmnntzThX7l3ncxa39bFsMq9OcXxUIlL9C7Y1bfmNoQeVssYwMfu0PXuDi5VdJ44_nNt1AofreVHrxxmk5F6Evw/s1600/Postman+SOAP+Web+Request+Screenshot+4.png" /></a></div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">So happy days!!! I have called a SOAP Web Service using Postman.&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">However, what happens if I want to call another SOAP Web Service using a value returned from the Fahrenheit to Celsius as a parameter. Well Postman makes it easy.....</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Postman provides a pm object&nbsp;and within this object is a method called sendRequest. This allows you to send a request to a service using Javascript. This sendRequest method can have the following parameters:</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">url - This is the URL of the service you want to call</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Method - This is the request method (POST, GET etc..)</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Header - The header values</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Body - The body of the request</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">So for my example my code looks as follows:</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi6t-hNuvLlPJ42dNifKzGkCM4AVVlaTAIpURVj276v2l9XDHk_h7fL6R1KK66zMoh1snxEAAnluh8A19mE4uUR1inBwjA-Hm626S3DnlLF7Bnohr_Q2f0AQW4RB3zHxalIfXV0-GJAON0/s1600/Postman+SOAP+Web+Request+Screenshot+2.png" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img border="0" data-original-height="480" data-original-width="1600" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi6t-hNuvLlPJ42dNifKzGkCM4AVVlaTAIpURVj276v2l9XDHk_h7fL6R1KK66zMoh1snxEAAnluh8A19mE4uUR1inBwjA-Hm626S3DnlLF7Bnohr_Q2f0AQW4RB3zHxalIfXV0-GJAON0/s1600/Postman+SOAP+Web+Request+Screenshot+2.png" /></a></div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">I added the above code to the Tests scripts tab so that when my original request returns the Celsius value, this test script will run. I</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">t takes the Celsius value returned by the Fahrenheit</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">ToCelsius call and uses that as the Celsius value in the CelsiusToFahrenheit call.&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">So the 2 lines at the top of my Test get the Celsius value from the response of my original web service call and place it in a variable called Celsius. The body of the service call is populated with the SOAP message for&nbsp;</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">the&nbsp;</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">CelsiusToFahrenheit</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">&nbsp;service call and the Celsius value is put into this message via the following piece of xml:</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><b><i>+ Celsius +&nbsp;</i></b></span><br />
+<br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">This sendRequest will now send a CelsiusToFahrenheit SOAP Webservice call using the value in the Celsius variable as the Celsius.&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">The final piece of my code in the tests tab looks like this:</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj4NV6duKEbjRvudbSo5Ba2CHvV_-i2FUBmmhxhQUNFFZvaVg1ksR5IVTEUSVTi-w9Me-sG3bVdTe3kuVaPkBcxotNTZBEGmmmtGQRhkFzWMJgxJ6N2WpsiSx7vTDxsIuXbTO30sGBSJTw/s1600/Postman+SOAP+Web+Request+Screenshot+3.png" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img border="0" data-original-height="638" data-original-width="1600" height="254" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj4NV6duKEbjRvudbSo5Ba2CHvV_-i2FUBmmhxhQUNFFZvaVg1ksR5IVTEUSVTi-w9Me-sG3bVdTe3kuVaPkBcxotNTZBEGmmmtGQRhkFzWMJgxJ6N2WpsiSx7vTDxsIuXbTO30sGBSJTw/s640/Postman+SOAP+Web+Request+Screenshot+3.png" width="640" /></a></div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">What this piece of code does is tests that the response from&nbsp; CelsiusToFarenshei is equal to 100.&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">So there you go. A nice&nbsp;example of how Postman&nbsp;can be used to test SOAP Web Service calls as well as how you can call a SOAP web service from within the tests section of a request using a variable that was populated from the response of the original request.</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span></div>

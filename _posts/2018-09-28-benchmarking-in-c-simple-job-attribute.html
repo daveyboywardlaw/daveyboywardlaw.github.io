@@ -1,0 +1,123 @@
+---
+layout: post
+title: Benchmarking in C# - Simple Job attribute
+date: '2018-09-28T09:21:00.001-07:00'
+author: David Wardlaw
+tags:
+modified_time: '2018-09-28T09:23:23.158-07:00'
+thumbnail: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyakPhx1KXY6DheMi8RmpK8xEiOXQLU0eTpk8eH0fn-m-y1EllJRqYnKkrp4Tju4nSRCETTG7K8NgVLYyG71AZweP8GumKqButtMpWXptiszBqe-pF19hcwL2rfdzC-e8WjjkwmGNcZ8c/s72-c/BenchMarkExploraation.PNG
+blogger_id: tag:blogger.com,1999:blog-5184156045713724288.post-8448140223592508484
+blogger_orig_url: https://testingsoftwaretimes.blogspot.com/2018/09/benchmarking-in-c-simple-job-attribute.html
+---
+
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">In this post I am going to continue my servies on BenchMarkDotNet and I will explain what the various parameters do that are present in the simplejob attribute.&nbsp;</span><br />
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Now I say all....... the documentation is not great so I will explain what 3 out of the 4 do :)</span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">So If you remember&nbsp;in my previous post I had a MyFirstBenchmark class which&nbsp;contained the details about the benchmark test that I wanted to run. In this class there is an attribute called SimpleJob and this attribute contains a few parameters that can be configured when you run a test.&nbsp;</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">By default BenchMarkDotNet will choose the number of iterations that will return the best precision. However, using the simplejob attribute allows you to quickly get a set of statistics.</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Below is how my test was setup:</span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span></div>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyakPhx1KXY6DheMi8RmpK8xEiOXQLU0eTpk8eH0fn-m-y1EllJRqYnKkrp4Tju4nSRCETTG7K8NgVLYyG71AZweP8GumKqButtMpWXptiszBqe-pF19hcwL2rfdzC-e8WjjkwmGNcZ8c/s1600/BenchMarkExploraation.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="1253" data-original-width="1086" height="640" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyakPhx1KXY6DheMi8RmpK8xEiOXQLU0eTpk8eH0fn-m-y1EllJRqYnKkrp4Tju4nSRCETTG7K8NgVLYyG71AZweP8GumKqButtMpWXptiszBqe-pF19hcwL2rfdzC-e8WjjkwmGNcZ8c/s640/BenchMarkExploraation.PNG" width="553" /></a></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Now as you can see I had the following parameters in the SimpleJob attribute:</span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span></div>
+<div>
+<b style="font-family: &quot;courier new&quot;, courier, monospace;">launchCount</b><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"> - This parameter allows you to define how many times the benchmarking test is run</span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span> <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><b>warmupCount</b> - This parameter allows you to define the number of warmup iterations that are performed before the actual test is run</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><b>invocationCount</b> - This parameter is the number of times that the test will be run per launch count. So in my screenshot above notepad will be opened 5 times for each launch count</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span> <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">So for example if my launchCount was 5 and my invocation count was set to 5 then notepad would be opened a total of 25 times.&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span> <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">Below are some examples of the output with different parameters set:</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span> <br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><b>Example 1</b></span><br />
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">launchCount = 1&nbsp;</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">warmupCount = 1&nbsp;</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">targetCount = 1&nbsp;</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">invocationCount = 1</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgarK3UoD4RIxDK0_qrF0lwV1Ef-bx-uHgzteSXnldqWCawRz9gRFrUpwmfcVgybOTUvAZhfC_w-wejjypIeGrpA7svO0Y-D7HoLQsad3qOOYL-qTbI-_31d-ccmad3Df_r4pD6kRFoYcg/s1600/SimpleJob+Example+1.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="1578" data-original-width="1076" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgarK3UoD4RIxDK0_qrF0lwV1Ef-bx-uHgzteSXnldqWCawRz9gRFrUpwmfcVgybOTUvAZhfC_w-wejjypIeGrpA7svO0Y-D7HoLQsad3qOOYL-qTbI-_31d-ccmad3Df_r4pD6kRFoYcg/s1600/SimpleJob+Example+1.PNG" /></a></div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span></div>
+</div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><b>Example 2</b></span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">launchCount = 1&nbsp;</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">warmupCount = 2&nbsp;</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">targetCount = 1&nbsp;</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">invocationCount = 1</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">The only difference between this and example one is that you can see an extra W<b>orkloadWarmup </b>line on the test.&nbsp;</span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span></div>
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCzvPiTl48mpFyzLL6cS3VcrCbXjw8ClmdEufi_E-Ugt5q5p_0fU4BOFJ76s07DbOenTzmiq3Qnjd4CWzXMZBCSzkBzMqkRUbfPN0C7KMRkzNFFYhdF6tKJcBhMr7LZjo_P871zGbsdJw/s1600/SimpleJob1211+Example+2.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="1583" data-original-width="1292" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCzvPiTl48mpFyzLL6cS3VcrCbXjw8ClmdEufi_E-Ugt5q5p_0fU4BOFJ76s07DbOenTzmiq3Qnjd4CWzXMZBCSzkBzMqkRUbfPN0C7KMRkzNFFYhdF6tKJcBhMr7LZjo_P871zGbsdJw/s1600/SimpleJob1211+Example+2.PNG" /></a></div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span></div>
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><b><br /></b></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><b>Example 3</b></span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">launchCount = 2&nbsp;</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">warmupCount = 2&nbsp;</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">targetCount = 1&nbsp;</span><span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">invocationCount = 2</span></span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">In this example you will see there is 2 sets of tests (launchcount=2) and the start of each test is show by the <b>//Launch: x/x </b>line.</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span></div>
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj5YCZyi5hnltnl5vprHPlyVDqJQ2xKIIyAWZIQhIrNciu4t0G7YzAJFNJhMnskLzN_vp4x644CFAqZD_727EpyWdDlT6NV5S-E4th3jlxjaXn7VguOmKURq1q7e1dydV_xp11o0CaLad4/s1600/SimpleJob2212+Example+2.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="1600" data-original-width="1052" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj5YCZyi5hnltnl5vprHPlyVDqJQ2xKIIyAWZIQhIrNciu4t0G7YzAJFNJhMnskLzN_vp4x644CFAqZD_727EpyWdDlT6NV5S-E4th3jlxjaXn7VguOmKURq1q7e1dydV_xp11o0CaLad4/s1600/SimpleJob2212+Example+2.PNG" /></a></div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">I hope you found this useful and in my next blog post I will show how this package can be integrated into Specflow.&nbsp;</span><br />
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;">If you feel the need to comment then please feel free....</span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span></div>
+<div>
+<span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />
+</span></div>
+<div>
+<br /></div>

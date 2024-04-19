@@ -1,0 +1,70 @@
+---
+layout: post
+title: How to deal with pauses and timeouts in specflow
+date: '2020-06-28T13:12:00.002-07:00'
+author: David Wardlaw
+tags:
+modified_time: '2020-06-28T13:12:32.306-07:00'
+blogger_id: tag:blogger.com,1999:blog-5184156045713724288.post-2464613218083344645
+blogger_orig_url: https://testingsoftwaretimes.blogspot.com/2020/06/how-to-deal-with-pauses-and-timeouts-in.html
+---
+
+So this blogpost is in response to the weekly Specflow blog posts and challenges that have been written by Gojko Adzic.<br />
+<br />
+This weeks challenge was how would you rewrite or rephrase the below scenario:<br />
+<br />
+<span style="background-color: #f8f8f8; color: #55606e; font-family: Monaco, &quot;Andale Mono&quot;, &quot;Courier New&quot;, Courier, monospace; font-size: 12px; white-space: pre-wrap;">Given a user registers successfully
+When the account page reloads
+And the user waits 2 seconds
+Then the account page displays "Account approved"</span><br />
+<br />
+My initial though was something like this:<br />
+<br />
+<b>Given a user registers successfully</b><br />
+<b>&nbsp;When the account page reloads</b><br />
+<b>&nbsp; Then the account page is displayed within a satisfactory time period</b><br />
+<b>&nbsp; &nbsp; And the account page displays "Account Approved"</b><br />
+<br />
+Now the problem with this scenario is what defines a satisfactory time? You could add it as a comment or in a scenario outline but over time the time a user waits could change and if this is updated in the code behind but the scenario outline or comments are not, then what the test does and what is described do not match - this would potentially cause issues in the future.<br />
+<br />
+My next idea was to write it using examples:<br />
+<br />
+<b>Given a user registers successfully</b><br />
+<b>&nbsp;When the account page reloads</b><br />
+<b>&nbsp; Then the account page is displayed within &lt;time&gt; minutes</b><br />
+<b>&nbsp; &nbsp; And the account page displays &lt;Account approval message&gt;</b><br />
+<b>Examples:</b><br />
+<b>| time | Account approval message&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |</b><br />
+<b>| 1&nbsp; &nbsp; &nbsp; | Account Approved&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </b><br />
+<b>| 2&nbsp; &nbsp; &nbsp; | Account Approved&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |</b><br />
+<b>| 3&nbsp; &nbsp; &nbsp; | Account Not Approved - system took to long to respond&nbsp;&nbsp; &nbsp; &nbsp;|</b><br />
+<b>| 4&nbsp; &nbsp; &nbsp; | Account Not Approved - system took to long to respond&nbsp; &nbsp; &nbsp; |</b><br />
+<br />
+Now this scenario although more detailed, suffers from the same problem as the original scenario i.e.&nbsp; The timing can be affected by things like CPU usage and network traffic and you may get inconsistent test results. It does however, give the user different examples of what constitutes a pass or failure.<br />
+<br />
+My final idea was this:<br />
+<br />
+<b>Given a user registers successfully&nbsp;</b><br />
+<b>&nbsp;And the account page reloads</b><br />
+<b>&nbsp;When the account page loading progress bar is at 100%</b><br />
+<b>&nbsp; Then the account page displays "Account Approved"</b><br />
+<br />
+Now this scenario (although not perfect) takes the timing element out and the reader of this takes away that the account page will display "Account Approved" once the progress bar is at 100% . It removes the actual time a user should be waiting&nbsp; so it means that the code behind doesn't need to contain specific details about the time needed to wait just that once the progress bar is at 100% that the account page should display "Account Approved". This means that whatever the state of the CPU or network traffic the test will pass whether the progress bar takes 10 mins or 10 seconds to get to 100%.<br />
+<br />
+I cant put my finger on why I still don't like my last scenario but I struggle with how you can successfully include waits and pauses in Specflow but&nbsp; I'm sure Gojko will put me out of my misery 😀<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

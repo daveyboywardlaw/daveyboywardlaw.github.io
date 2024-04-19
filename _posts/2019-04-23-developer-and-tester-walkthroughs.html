@@ -1,0 +1,77 @@
+---
+layout: post
+title: Developer and Tester Walkthroughs
+date: '2019-04-23T08:34:00.000-07:00'
+author: David Wardlaw
+tags:
+modified_time: '2019-06-03T09:44:49.816-07:00'
+blogger_id: tag:blogger.com,1999:blog-5184156045713724288.post-8315810727500141180
+blogger_orig_url: https://testingsoftwaretimes.blogspot.com/2019/04/developer-and-tester-walkthroughs.html
+---
+
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<span style="font-family: Courier New, Courier, monospace;">In this blog post I am going to talk through a new technique that I have started where me, the tester, and the developer, have a walkthrough of a change that the developer has made for a particular feature.</span><br />
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<b><span style="font-family: Courier New, Courier, monospace;">So what are these walkthroughs?&nbsp;</span></b><br />
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<span style="font-family: Courier New, Courier, monospace;">So these walkthroughs are a time for the developer and tester to get together and for the developer to talk through and explain the code changes that they have made. By talking through the code, I mean the actual code that the developer has written and not a demo of the new behaviour. During this session, the tester is free to ask any questions, this could range from questions about the code to questions about the effect that the code changes have on existing behaviour.&nbsp; These sessions are time boxed to 30 minutes and typically take place before the developer has raised a pull request to merge the changes into the master branch.</span><br />
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<b><span style="font-family: Courier New, Courier, monospace;">Why do we do them?</span></b><br />
+<span style="font-family: Courier New, Courier, monospace;"><b><br /></b>
+In short - to find issues before I get a release.... but the 2 main reasons are based upon a couple of common statements that I've heard multiple times:</span><br />
+<span style="font-family: Courier New, Courier, monospace;"><b><br /></b><i>
+"Testing is something that should happen as early in the development process as possible"</i></span><br />
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<span style="font-family: Courier New, Courier, monospace;">Now this statement is quite common and one which I agree is true. By doing these walkthroughs we are performing 'testing'* earlier in the SDLC and any bugs that are found are cheaper to fix as we are fixing them before any code has been checked in.</span><br />
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<span style="font-family: Courier New, Courier, monospace;">* By testing I mean learning about the system which does not necessarily limit it to just testing through the UI.</span><br />
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<i><span style="font-family: Courier New, Courier, monospace;">"Testing should happen at any stage of the SDLC"</span></i><br />
+<span style="font-family: Courier New, Courier, monospace;"><i><br /></i>
+Now this statement is not so common but again it is one that I agree with. Testing is not just testing the UI via selenium or a REST API via a tool like postman. It is also learning about the product, building a model of the product and coming to a conclusion about the quality of the product. By having these reviews I can start to build a model of the product which in turn can influence how I decide to test it when I get a release. Also, depending on the change I have an idea of the quality of the change. This is due to experience and usually only applicable to changes that are similar to ones we have made in the past.</span><br />
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<b><span style="font-family: Courier New, Courier, monospace;">How did these walkthroughs help?</span></b><br />
+<span style="font-family: Courier New, Courier, monospace;"><b><br /></b>
+These walkthroughs had a positive impact on the quality of the product as well as on the development and testing process.</span><br />
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<span style="font-family: Courier New, Courier, monospace;">1) Develops the testers understanding of the code</span><br />
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<span style="font-family: Courier New, Courier, monospace;">By being exposed to the code, the tester can (over time) start to understand code syntax and what it does. This is great for tester&nbsp; in that should they need to look at any code in the future for whatever reason, they will have a better understanding. For example, If they decide to investigate why a particular bug is occurring&nbsp; they can look at the actual code where the bug is present and try to figure out why, this in turn can help the developer.</span><br />
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<span style="font-family: Courier New, Courier, monospace;">2) Issues found early</span><br />
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<span style="font-family: Courier New, Courier, monospace;">After implementing these reviews multiple times issues where being found early. Examples include:</span><br />
+<ul>
+<li><span style="font-family: Courier New, Courier, monospace;">The developer, when explaining a change realised that what they had done was incorrect.</span></li>
+<li><span style="font-family: Courier New, Courier, monospace;">A particular changes Acceptance criteria was not thoroughly defined enough so the developer and me sought clarification</span></li>
+<li><span style="font-family: Courier New, Courier, monospace;">I was reviewing the logic and highlighted a potential gap in the logic that required some investigation</span></li>
+</ul>
+<div>
+<span style="font-family: Courier New, Courier, monospace;">So the payback from these reviews has found issues which would of otherwise not been found till I have received a release and started testing.&nbsp;</span></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;"><br /></span></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;">3) Builds relationships</span></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;"><br /></span></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;">These walk-through were usually done remotely and then was due to the developer being located away from the office. Usually I may not speak to a developer unless there was an issue but by doing these walkthroughs a more in depth relationship was built between myself and the developers.&nbsp;</span></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<span style="font-family: Courier New, Courier, monospace;">4) Help developers understand testers</span><br />
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<span style="font-family: Courier New, Courier, monospace;">By a developer having a tester ask questions they can start to gain an understanding of how that particular tester thinks. This, in turn will help the developer for future changes. So, for example, a tester keeps asking questions about the security when a user enters personal details. The next time the developer writes a similar feature they will know what questions the tester will ask and therefore look at security more thoroughly before the walk through.</span><br />
+<span style="font-family: Courier New, Courier, monospace;"><br /></span></div>
+<div>
+<b><span style="font-family: Courier New, Courier, monospace;">Conclusion</span></b></div>
+<div>
+<b><span style="font-family: Courier New, Courier, monospace;"><br /></span></b></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;">Looking back at these reviews it is definitely something that I am glad we implemented. The time that it has saved on bug fixes later on in the SDLC has paved the way for other types of testing to be planned in, for example API testing, performance testing etc.... As they are time boxed they don't take up too much time but the payback is definitely worth it.</span></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;"><br /></span></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;"><br /></span></div>
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<br />
