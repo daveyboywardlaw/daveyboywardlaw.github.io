@@ -1,12 +1,12 @@
 - name: Testing Tools
   image: https://cdn.pixabay.com/photo/2015/01/08/18/27/startup-593341_960_720.jpg
   link: https://github.com/daveyboywardlaw/TestingTools
-  description: Some testing tools I have written to help with testing
+  description: Some testing tools I have written to help with testing.
 - name: Bench Marking
   link: https://github.com/daveyboywardlaw/BenchMarkingExploration
   image: https://cdn.pixabay.com/photo/2015/01/09/11/08/startup-594090_960_720.jpg
-  description: Repository for showing how BenchMarkNuGet package can work
+  description: Repository for showing how BenchMarkNuGet package can work.
 - name: Playwright UI Testing
   link: https://github.com/daveyboywardlaw/PlaywrightUITesting
   image: https://cdn.pixabay.com/photo/2016/06/25/12/55/art-1478831_960_720.jpg
-  description: Repository to show UI testing of https://ecommerce-playground.lambdatest.io/
+  description: Repository to show UI testing of https://ecommerce-playground.lambdatest.io/.
