@@ -39,7 +39,8 @@ author-name: David Wardlaw
 # URL for the Image of the Author
 author-image: /assets/images/dave.jpg
 # 60 Words About the Author
-author-about: My name is Dave and I am a software quality and testing professional with over 13 years experience. Most of my experience is in testing applications for financial institutions covering areas such as standard settlement instructions (SSI) and know your customer (KYC). I have spent the last few years working as a test manager where I have led quality and testing across various projects and products.
+author-about: My name is Dave and I am a software quality and testing professional with over 13 years experience. Most of my experience is in testing applications for financial institutions covering areas such as standard settlement instructions (SSI) and know your customer (KYC). 
+Recently I have moved to quality lead role in a different industry where the focus is on a quality assistance model where developers do the testing and people in quality coach and mentor. 
 # URL to the Author's Profile (i.e., Github, Twitter, Stackoverflow, etc)
 author-url: https://github.com/daveyboywardlaw
 
