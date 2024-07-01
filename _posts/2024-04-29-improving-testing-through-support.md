@@ -20,7 +20,7 @@ So how can the support team help us improve testing?
 In support calls that are raised there will be steps to reproduce. Now these steps will be written from the users perspective and this will provide insight into how they are using the system. It may give information such as:
 
 * How users navigate through the system
-* Do users use keyboard shortcuts
+* Do users use keyboard shortcuts?
 * Examples of real life data that users enter
 * The order in which users perform certain tasks
 
@@ -33,21 +33,24 @@ So how can this be documented? Well it may just be something simple like Sharepo
 Bugs will always get through. Your users may never find the bugs but they will always exist. When a bug is found the best outcome is that it is fixed and deployed as quickly as possible and lessons are learnt. A great way to learn lessons is to look at support tickets that have been raised and understand how various elements (including testing) could have been done better to stop the issue happening again.
 
 Now when issues get raised, each issue will involve interaction with the users around things such as:
-	* What is the error
-	* What steps were performed prior to the error occurring
-	* What data was used
-	* How it impacts the user
 
-Now the support team will have hopefully understood the issue and managed to fix it. By doing this they have in depth knowledge of the issue. Now combining this with the input if a testing/quality  professional they can try and understand why the issue happened and what could have been done to prevent it. Now in my experience issues raised to the support team will typically cover the following kinds of things:
+* What is the error
+* What steps were performed prior to the error occurring
+* What data was used
+* How it impacts the user
+
+Now the support team will have hopefully understood the issue and managed to fix it. By doing this they have in depth knowledge of the issue and what caused it. Now combining this with the input of a testing/quality professional you can now try and understand why the issue happened and what could have been done to prevent it. This maybe some addition testing that could be done in the future for a similar change or even a documentation update. Getting buy in from the support team should be easy as the aim here is to stop bugs getting raised, and support teams can get behind this as less bugs means more time working on other things that they may want to work on. How you liase with the support team and document the testing lessons is up to you, it may be monthly meetings or it could be done some other way. The important thing is that that information is shared and documented in such a way that it can easily be found by other teams and can be updated when needed. 
+
+Now in my experience issues raised to the support team will typically cover the following kinds of things:
 
 * System questions
 * Technical questions
+* Behavioural Questions
 * Software faults
-* Behaviour Questions
 
-Now each of these provides an opportunity to not only improve testing but also the quality of other aspects of the system (By system I mean the actual software and supporting artifacts)
+Now each of these provides an opportunity to not only improve testing but also the quality of other aspects of the system, for example documentation.
 
-First lets look at these things.......
+Lets look at these things.......
 
 ### System Questions
 
@@ -57,80 +60,34 @@ For example, Can I call the api to upadate a users email address.
 
 ### Technical Questions
 
-This will be questions about a technical aspect of the system. This will typically be asked by a clients infrastructure team ior if the software has apis or is configurable could be questions from a client development team.
+This will be questions about a technical aspect of the system. This will typically be asked by a clients infrastructure team or if the software has apis or is configurable, could be questions from a client development team.
 
-For Example, Will the system work on teh latest version of Windows Server?
+For Example, Will the system work on the latest version of Windows Server?
 
 ### Behaviour Question
 
-THese will be about how the system will behave in certain circumstances. THis could be from a functional perspective or even from an integration perspective.  
+These will be about how the system will behave in certain circumstances. This could be from a functional perspective or even from an integration perspective.  
 
 For example, Why does the system not mandate a date of birth?
 
-### Software Faults
+### Software Fault
 
 These will be what you would traditionally call bugs. Issues with the software where the functionality is incorrect or there is an error.
 
 For example, The system doesn't ask for a DOB on a system where age drives additional behaviour or when a user adds a record there is an unhandled exception. 
   
-For all of these areas you can document what needs to be improved however you see best, It may be that you update existing documentation so that the issue raised does not get rased again. For example for a technical question you update technical documentation to answer the question that was raised. Or it may be that you create a hints and tips document for when you have workshops with potential clients to mitigate the risk of requirements being misunderstood. 
+### Documentation
 
+For all of these 4 areas above you can document what needs to be improved however you see best. Here are some examples:
 
+ * Update existing documentation so that the issue raised does not get raised again. For example for a technical question you update technical documentation. 
+ * Create a hints and tips document for when you have workshops with potential clients to mitigate the risk of requirements being misunderstood. 
+ * Add testing scenarios that should be run for similar changes
+  
+ Whatever you do the key thing is to mitigate those types of issues being raised again. 
+ 
+## Wrap Up
 
-
-
-
-
-
-
-
-
-
-
-
-
-So how can we learn from support
-
-DIAGRAM ABOUT THE PROCESS
-
-
-Set-up meeting with support
-
-Speak to support about buy in
-
-How can you go about getting the ball rolling…..?
-
-Get buy in
-Speak to the support manager to explain what you want to do and why you want to do it. The main benefit of better
-Testing will be less support tickets. This in turn will free up team for their team to work on other things.  This also will give the customer a better XXXXX of the product as they are raising less support tickets than they have in the past. And remember only the customer can define XX what quality looks like so it goes a long way to helping with that.
-
-Set up a meeting with the support team 
-Once you have buy in set up a meeting at a convenient interval. I have found that monthly intervals is good for this. It is long enough that you will have something to talk about and short enough that the last meeting is relatively fresh in people heads. 
-
-What to do in that meeting
-The support team walk through each ticket that was closed in the last month and explain:
-	○ What the issue was
-	○ Why the client uses this feature (May be obvious)
-	○ How the issue was effecting the customer
-	○ How it was fixed
-	○ Any issues around fixing it
-
-Discussion
-Once the support team have given an overview of the issue the people in the meeting discuss what lessons can be learnt. Now these lessons could be any of the following:
-	○ Testing Lesson
-		○ Could this issue have been caught with another type of testing? Ws the sceanrio missed? This is all about improvements in testing that could be made that would catch the issue.
-	○ Documentation improvement Lesson
-		○ Could documentation be improved to stop a support ticket being raised. For example if there was a user manual and a user raised a support ticket about how to do something then this could  feed into an improvement in the product documentation. 
-	○ Requirements Lesson
-		○ Is the issue purely one where what was built did not match what the users want? This could be  requirements issue that means the requirements process needs to be improved in order to make sure similar things do not happen again. 
-	○ Process Lesson
-
-Once the lessons have been discovered these should be documented in a central place where everyone can see them and use them. 
-
-How can teams learn from the lessons?
-
-Now that the lessons have been documented team can go to them and look to see of there are any lessons that they can use to help tem with their work. It may be athat a new team works on a simialr feature to one that had a support ticket raised and lessons where learnt. 
-
-
-Why do this?
-
+Support is a key source of information that can be used to improve the quality of your product. Tapping into this will give great insights into users and how they use the system as well as showing you where things can be improved. 
+Remember the quality of a system is not just the 'program' that the user sees, its all of the other artifacts around it. If these are not good quality the impact on your product and company could 
+be significant. 
