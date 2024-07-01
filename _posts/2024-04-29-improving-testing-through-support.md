@@ -9,7 +9,7 @@ tags:
 - Quality
 ---
 
-There are many ways in which you can improve a teams testing. One way is the learnings discovered through sprint retrospectives whilst another is for testers to go on courses or learn from testing communities. Both of these are excellent mechanisms for helping a team to improve their testing. But how about being able to improve testing through talking to the support team? It may feel that 
+There are many ways in which you can improve a teams testing. One way is the learnings discovered through sprint retrospectives whilst other ways are for testers to go on courses or learn from testing communities. All of these are excellent mechanisms for helping a team to improve their testing. But how about being able to improve testing through talking to the support team? It may feel that 
 support are in their own little world, dealing with customers queries as well as fixing any issues that are raised. However, taking a step back, the support team are the one team that probably have 
 more interaction with the end users that most other people. As well as that interaction they may have a massive wealth of information about how the users use the system through any bugs that have been raised. 
 
@@ -17,30 +17,28 @@ So how can the support team help us improve testing?
 
 ## Share how users use the system
 
-In bugs that are raised there will probably be steps to reproduce. Now these steps will be written from the users perspective and this will provide insight into how they are using the system. It may give information such as:
+In support calls that are raised there will be steps to reproduce. Now these steps will be written from the users perspective and this will provide insight into how they are using the system. It may give information such as:
 
-* How they navigate through the system
-* Do they use keyboard shortcuts
-* Examples of real life data that they enter
-* The order in which they perform certain tasks
+* How users navigate through the system
+* Do users use keyboard shortcuts
+* Examples of real life data that users enter
+* The order in which users perform certain tasks
 
-Now this information is very useful from a testing perspective. When testing testers will typically do things a certain way. For example a tester may use the mouse to copy and paste data into the system. But what if through looking at support tickets  a lot of users use keyboard shortcuts? Yes you are testing the copy and paste functionality but you are not using the system like users seem to be. So there is potentially a gap where the testing being done os not representative of how a user uses the system. Now you are never going to test exactly like a user uses the system but if you can cover some of 
-what they do it will help to make sure that the users are satisfied when they use the system.
+Now this information is very useful from a testing perspective. When testing, testers will typically do things a certain way. For example a tester may use the mouse to copy and paste data into the system. But what if through looking at support tickets  a lot of users use keyboard shortcuts? Yes you are testing the copy and paste functionality but you are not using the system like users are. So there is potentially a gap where the testing being done is not representative of how a user uses the system. Now you are never going to test exactly like a user uses the system but if you can cover some of what they do it will help to make sure that the users are satisfied when they use the system.
 
-So how can this be documented? Well it may just be something simple like Sharepoint site that the support team create that documents some key behaviours about the users. The development teams can then use this to help guide how they test. Now the information may change as time goes on but it will be a useful resource for anyone who tests the system. 
+So how can this be documented? Well it may just be something simple like Sharepoint site that the support team create that documents some key behaviours about the users. The development teams can then use this to help guide how they test. Now the information may change as time goes on (so it should be updated) and it will be a useful resource for anyone who tests the system. 
 
 ## Learn testing (and quality) Lessons
 
-Bugs will always get through. You are not going to be able to stop but they will always get through. Your users may never find the bugs but they will always exist. When a bug is found the best outcome is that it is fixed and deployed as quickly as possible and lessons are learnt. A great way to learn lessons is to look at support tickets that have been raised and understand how various elements (including testing) could have been done better to stop the issue happening again.
+Bugs will always get through. Your users may never find the bugs but they will always exist. When a bug is found the best outcome is that it is fixed and deployed as quickly as possible and lessons are learnt. A great way to learn lessons is to look at support tickets that have been raised and understand how various elements (including testing) could have been done better to stop the issue happening again.
 
-Now when issues get issues raised and each issue will involve interaction with the users around things such as:
+Now when issues get raised, each issue will involve interaction with the users around things such as:
 	* What is the error
 	* What steps were performed prior to the error occurring
 	* What data was used
 	* How it impacts the user
 
-Now the support team will have hopefully understood the issue and managed to fix it. By doing this they have in depth knowledge of the issue. Now combining this with the input if a testing 
-professional they can try and understand why the issue happened and what could have been done to prevent it. Now in my experience issues raised to the support team will typically cover the following kinds of things:
+Now the support team will have hopefully understood the issue and managed to fix it. By doing this they have in depth knowledge of the issue. Now combining this with the input if a testing/quality  professional they can try and understand why the issue happened and what could have been done to prevent it. Now in my experience issues raised to the support team will typically cover the following kinds of things:
 
 * System questions
 * Technical questions
@@ -49,15 +47,42 @@ professional they can try and understand why the issue happened and what could h
 
 Now each of these provides an opportunity to not only improve testing but also the quality of other aspects of the system (By system I mean the actual software and supporting artifacts)
 
-First lets look at the questions....
+First lets look at these things.......
 
 ### System Questions
 
+These will typically be questions about what the system can do. Not from a functional perspective but more from a features perspective.
+
+For example, Can I call the api to upadate a users email address.
 
 ### Technical Questions
 
+This will be questions about a technical aspect of the system. This will typically be asked by a clients infrastructure team ior if the software has apis or is configurable could be questions from a client development team.
+
+For Example, Will the system work on teh latest version of Windows Server?
 
 ### Behaviour Question
+
+THese will be about how the system will behave in certain circumstances. THis could be from a functional perspective or even from an integration perspective.  
+
+For example, Why does the system not mandate a date of birth?
+
+### Software Faults
+
+These will be what you would traditionally call bugs. Issues with the software where the functionality is incorrect or there is an error.
+
+For example, The system doesn't ask for a DOB on a system where age drives additional behaviour or when a user adds a record there is an unhandled exception. 
+  
+For all of these areas you can document what needs to be improved however you see best, It may be that you update existing documentation so that the issue raised does not get rased again. For example for a technical question you update technical documentation to answer the question that was raised. Or it may be that you create a hints and tips document for when you have workshops with potential clients to mitigate the risk of requirements being misunderstood. 
+
+
+
+
+
+
+
+
+
 
 
 
