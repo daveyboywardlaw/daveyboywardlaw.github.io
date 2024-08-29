@@ -9,8 +9,6 @@ tags:
 - Quality
 ---
 
-## Introduction
-
 In this post I am going to talk about the advantages of having developers doing the testing over dedicated testers. 
 
 ## A bit of background
