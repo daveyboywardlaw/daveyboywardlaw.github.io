@@ -8,8 +8,6 @@ tags:
 - Software Development
 ---
 
-## Feedback workshop
-
 This workshop is a way to understand the speed of the feedback in you software development process. 
 
 ### Overview of template
@@ -25,7 +23,6 @@ There are some coloured dots that can be used to represent the speed of the feed
 ![Feedback Speeds](/assets/images/feedback-speeds.png)
 
 And finally there are some coloured blue boxes that can be used as additional notes to add anything that impacts the speed of the feedback loops that may not be covered in the process diagram.
-
 
 ### Process
 
@@ -47,6 +44,6 @@ And finally there are some coloured blue boxes that can be used as additional no
 
     If there are additional notes add these to the blue boxes above the process 
 
-3. During the sprint retrospective bring something in that could be improved. 
+3. During a sprint ceremony add something in that could be improved or something to celebrate
 
-   Once you have spoken to everyone on the team you now need to act on that feedback. To do this pick both positive (fast feedback loops or positive comments) as well as the negative (slow feedback loops and negative comments) and bring one of them into one of the teams ceremonies so that the team can discuss how to improve, or celebrate something that they think they do well. The important thing is to bring the feedback up in a sprint ceremony that already exists, for example the sprint retro. Try not to create a whole meeting just to go through all of the points from this workshop as making it organic will increase the likeihood of improvement. 
+   Once you have spoken to everyone on the team you now need to act on that feedback. To do this, pick both positive (fast feedback loops or positive comments) as well as the negative (slow feedback loops and negative comments) and bring one of them into one of the teams ceremonies. In the ceremony the team can discuss how to improve a feedback loop they don't do well, or celebrate a feedback loop that they do well. The important thing is to bring the feedback up in a sprint ceremony that already exists, for example the sprint retro. Try not to create a whole meeting just to go through all of the points from this workshop, as making it organic through using an existing sprint ceremony will increase the likelihood of improvement.
