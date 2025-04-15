@@ -30,6 +30,7 @@ And finally there are some coloured blue boxes that can be used as additional no
 
    Each meeting should be no-more than 15 minutes
 
+
 2. During the meeting run through the template and ask whether the feedback is always quick, sometimes slow or always slow. 
 
    If they are not directly involved in the part of the process then their feedback is perceived and if it is perceived then the corresponding dot should go inside the feedback loop box
@@ -42,7 +43,8 @@ And finally there are some coloured blue boxes that can be used as additional no
 
     It is important to capture the perceived feedback as this can help discover any misunderstandings. For example the engineering manager may think that the feedback is slow but actually when you speak to others on the team that particular feedback loop is as quick as it can be. 
 
-    If there are additional notes add these to the blue boxes above the process 
+    If there are additional notes add these to the blue boxes above the process
+
 
 3. During a sprint ceremony add something in that could be improved or something to celebrate
 
