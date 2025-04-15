@@ -1,5 +1,5 @@
 ---
-title: Moving from testing to quality coaching
+title: Changes when moving from testing to quality coaching
 layout: post
 post-image: /assets/images/tester-to-quality-coach.png
 description: 
@@ -24,7 +24,7 @@ As a tester your role is typically very specific and targeted on testing a featu
 
 ![Holistic Testing Model](/assets/images/holistic-testing-model.png)
 
-Looking at Lisa Crispins and Janet Gregories Holistic testing model above and using it as a guide you may do things like...
+Looking at Lisa Crispin's and Janet Gregory's Holistic testing model above and using it as a guide, you may do things like...
 		
 **Discover**
 - Understand the domain and the customers  	
