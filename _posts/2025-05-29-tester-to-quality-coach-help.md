@@ -1,5 +1,5 @@
 ---
-title: Help when  with changes when moving from testing to quality coaching
+title: Help with the changes that happen when moving from testing to quality coaching
 layout: post
 post-image: /assets/images/tester-to-quality-coach-help.png
 description:
