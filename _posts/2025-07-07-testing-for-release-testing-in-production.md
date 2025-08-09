@@ -1,7 +1,7 @@
 ---
 title: Testing prior to release and testing in production
 layout: post
-post-image: /assets/images/tester-to-quality-coach-help.png
+post-image: /assets/images/testing-prior-release-testing-production.png
 description:
 tags:
 - Testing
@@ -24,7 +24,7 @@ Testing in production is when the activities of the user are monitored and obser
  * Raising alerts when an exception occurs in the logs
 
 ## What does successful testing look like in each
-So what does successful testing look like in each of these areas
+So what does successful testing look like in each of these areas?
 
 ### Release testing
 So successful release testing will look good when:
@@ -43,14 +43,10 @@ Successful testing in production will look good when:
 ## Successful release testing != successful testing in production (and visa versa)
 So why does successful testing prior to release not mean that testing in production wil be successful?
 
-Imagine this: you've thoroughly tested a new feature before release. You've done exploratory testing, covered a wide range of test scenarios via automation and reviewed everything against the user story or even a detailed functional specification. Everything checks out, and you feel confident that the feature will make customers happy because there is a low likehood of bugs. So, you go ahead and release it.
+Imagine this: you've thoroughly tested a new feature before release. You've done exploratory testing, covered a wide range of test scenarios via automation and reviewed everything against the user stories or even a detailed functional specification. Everything checks out, and you feel confident that the feature will make customers happy because there is a low likelihood of bugs. So, you go ahead and release it.
 
-A few days pass. You start monitoring usage and quickly realize something's off — no one is using the feature. Then, a call comes in from someone high up in the company:
-“This new feature hasn’t driven the increase in paid subscriptions we were expecting.”
-The team gets a stern talking-to, and you're left confused. There were no bugs at release. Testing went well. But despite successful pre-release testing, the real-world outcome didn’t match what management were expecting.
+A few days pass. You start monitoring usage and quickly realize something's off — no one is using the feature. Then, a call comes in from someone high up in the company:“This new feature hasn’t driven the increase in paid subscriptions we were expecting.” The team gets a stern talking-to, and you're left confused. There were no bugs at release. Testing went well. But despite successful pre-release testing, the real-world outcome didn’t match what management were expecting.
 
-Now flip that situation. The feature was rushed and testing was minimal due to tight deadlines. You release it nervously, expecting a flood of bug reports. But surprisingly, only a few minor issues pop up. Monitoring shows heavy usage of the new feature. Soon, you get another call from a higher-up — and this time, it’s praise: “This new feature exceeded our expectations have paid subscriptions have gone up ten fold.” The team is congratulated and even given the rest of the day off.
+Now flip that situation. The feature was rushed and testing was minimal (you only got to test the key user paths) due to tight deadlines. You release it nervously, expecting a flood of bug reports. Some bugs get reported but nothing that is a show stopper. Monitoring shows heavy usage of the new feature. Soon, you get another call from management — and this time, it’s praise: “This new feature exceeded our expectations have paid subscriptions have gone up ten fold.” The team is congratulated and are even given the rest of the day off :) 
 
-Sure, it could have gone the other way. If the lack of testing had resulted in severe bugs, the feature likely wouldn’t have driven much value because of the bugs.
-
-The takeaway? Just because a release passes all your tests doesn’t mean it will succeed in the real world. Testing in staging or QA environments isn’t the same as testing in production — and success in one doesn’t guarantee success in the other. Yes testing in production is partly looking for issues in the logs like exceptions, but it is also about testing to see if the feature is actually being used. Its no good having a app with no bugs that nobody uses. If it is being used then it is adding value to the users and if it add values users will continue to use it as well as pay to use it. 
+The takeaway? Just because a release passes all your tests doesn’t mean it will succeed in the real world. Testing in staging or QA environments isn’t the same as testing in production. Yes testing in production is partly looking for issues in the logs like exceptions, but it is also about testing to see if the feature is actually being used. Its no good having a app with no bugs that nobody uses. If it is being used then it is adding value to the users and if it add value, users will start using it or continue to use it. The key to having success in both is great product work - understanding the users and their needs and also a whole team approach to testing that happens as far let in the SDLC as possible.
