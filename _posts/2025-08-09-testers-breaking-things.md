@@ -1,7 +1,7 @@
 ---
 title: The problem with people saying testers break things
 layout: post
-post-image: /assets/images/testing-prior-release-testing-production.png
+post-image: /assets/images/testers-breaking-things.png
 description: Article about how saying testers break things can be bad
 tags: Testing
 ---
