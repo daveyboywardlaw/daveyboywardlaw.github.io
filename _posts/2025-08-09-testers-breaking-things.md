@@ -14,54 +14,44 @@ This blog will talk about why saying "Testers break things" can be harmful to te
 
  One phrase that infuriates me in the testing and quality world is "Testers just break things". It may may take others forms such as: 
 
-	- "You're a tester, your job is to break things"
+ - "You're a tester, your job is to break things"
 
-	- "All you testers do is break things"
+ - "All you testers do is break things"
 
-	- "Try and do your best to break It"
+ - "Try and do your best to break It"
 
+It may sometimes seem a little jokey or said in jest but ultimately is can have negative connotations to the tester, testers and testing as a whole. Just the word break elicits negative things. As a child you would have got told off if you broke something. I know I did!!!
 
-It may sometimes seem a little jokey or said in jest, but ultimately is can have negative connotations to the tester, testers and testing as a whole. Just the word break elacites negative things. As a child you would have probably got told off if you broke something. I know I did and I would do anything to cover it up. I once kick a football in the garden and broke a branch of an expensive bush/tree thing that they had bought. I know I would get told off because I "broke it" so I used sellotape to fix it !!!! 
-
-Negative connotations about someones role, task or job can have a negative impact in many ways. Below are some examples and how they could relate to testing:
-
-### Psychological Well-being
-If a tester hears that all they do is break things then it could result in a demineished sense of self worth as well as more serious things such as anxiety and depression when individuals internlise negative self perceptions
-
-### Discrimination:
-Negative connotations can contribute testers potentially be deswcriminated against and have a sense of diminished value as all they do is "break things"
-
-### Opinion Formation:
-If testing is seen as breaking things and unfavourable, the connotation can make people have negative opinions about testing as a whole and individuals that test. Others may feel that all testers can do is break things and nothing else.
-
-### Creates Tension:
-Negative connotations could make communication tense when a tester needs to communicate some negative news. They may not communicate at all or gloss over it as they may feel they will just get told "Oh you always break it".
-
-Now some people lean into this persona of breaking things and that’s OK, providing you are happy with that. However, if you are not if can impact how you feel as well as how others perceive you. Now some of these may seem a little extreme but they can happen. If people keep saying things enough you can start to believe it. A lot of people just want to do a good job and feel like they add value and these negative connotations can have that impact. 
-
+Also, even now I feel testing in some quarters is still looked down upon like it was a few years ago and saying testers only break things doesn’t help. Testing has in the past been seen (In my opinion) as something that requires less skill and is something that always brings bad news to a project or product. As a tester you will be the one saying, "I've found a critical bug!!" or asking questions that could mean a change is required. Testers don’t actually produce anything that is tangible to help deliver a project or product. A developer writes code that ultimately brings a design and product idea to life. The designer will have designs that will have been reviewed and implemented and a product person will come up with the idea and have research about why the idea will make the company money or benefit the customer. All of these are positive things for a piece of software. However that positivity can be tempered by a tester finding a critical issue a few days before go-live or asking a question about the software that could highlight that re-work is needed. 
 
 ### What do I mean by a break
 
-A break in software is something that results in unintended behaviour that has  a negative impact to the user.
+What I mean by break is an outcome where the software exhibits unintended behaviour that has a negative impact on the users experience of that software. 
 
 ### You broke it!!! No I didn't
 
-When is something broken? Lets take a children's toy. Its usually pretty obvious when it is broken, If you have a toy car and it is missing a wheel then it is clear that it is broken. Now it may be that you cannot see that it is broken, for example, the wheel could be hanging by a thread and looks OK. Its only when you start using it do you realise that it is broken. Most of the time though it will be obvious and most breaks will easily be seen. 
+If this language is used someone looking in from the outside may assume that testers break the software. They may think that they intentionally do something to make the software behave in the incorrect way. Now we all know that, this is incorrect. What a tester does is execute (manually or through automation) steps that could result in then observing the software behaving in the incorrect way. 
 
-Software is different, it is always going to be broken. THere will always be some part of the system that has an issue that has not been found yet. It may be obvious but it may not be. The issues can be very subtle and very hard replicate but in all software there will be issues. So when someone says a tester just break things they are wrong, the software is already broken. What the tester has done is uncover that the software is broken. 
+A tester cannot break the software as it is already broken. 
 
-### ???
+### Software is different
 
-The key skill of a tester is knowing where to look for thise breaks and understand how best to test the software in order to uncover them. Thats a skill that requires years of proactoce to hone and develop. By saying oh testers just break something diminishes the skills good testers have and ignore the value work that they contribute to a successful product or project. 
+Software is different, it is always going to be broken. Somewhere in the process, whether it be in incorrect logic, incomplete requirements or poor unit testing an issue has crept into the software which could impact the users. There will always be some part of the system that has an issue that has not been found yet. It may be obvious but it may not be. The issues can be very subtle and very hard replicate but in all software there will be issues. So when someone says a tester just break things they are wrong, the software is already broken. What the tester does is use their skill and experience to uncover where the software is broken and in what scenarios. 
 
-### What can we do to change it
+## Testers Skills
 
-There are a couple of ways:
+The key skill of a tester is knowing where to look for these breaks and understand how best to test the software in order to uncover them. Its a skill that requires years of practice to hone and develop. Those years can be spent learning a vast array of tools or becoming an expert in an area of testing such as exploratory or security. Through years of practice and uncovering issues across potentially many companies testers know what signs to look for and will have some great heuristics that will help them uncover these broken bits of the software. 
 
- - Oh, stop saying I break things, I do more than that !!!!
-	Yes that is one way but probably not the best way as it could damage relationships
+ By saying oh testers just break something diminishes the skills good testers have and ignore the value work that they contribute to a successful product or project. 
 
- - SHow the results of what you do 
-	Show how you found the bug and what your thought process was as you were testing. THis will show the skill that you have and that there is more to testing that just breaking it
+## Changing the narrative
 
+There are a couple of things you can say and do to illustrate that as a tester you dont "Just break things"
 
+ - Show the results of what you do 
+    
+    When you find an issue and you bring it to the team show how you found the bug and your thought process behind what you did to find it. By explaining this to the team they will over time gain an understanding of the skill that it takes to find certain bugs as well as how a testers mind works in various testing scenarios and contexts. 
+    
+- Pair with developers to test
+
+    This links to the first point. Sit with the developer and pair test. By them watching you in action they can see how you work and how you go about finding bugs in certain scenarios, That will help them understand how you work and they can also ask the why so that they know why you are doing it and can learn so they can test better themselves. 
