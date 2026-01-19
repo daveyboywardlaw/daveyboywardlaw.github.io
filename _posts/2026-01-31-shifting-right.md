@@ -54,24 +54,20 @@ Sometimes the application that a user is interacting with can have issues that d
 Now the monitoring performance and monitor logs are both proactive approaches to shift right. They are taking the initiative and fixing things before the user does.
 
 ## What do you need to do?
-Now all of what I have mentioned are great but a key thing to make them work and be successful is to think about them as early as you can in the sale.. So when you are in the left hand 
-side of the Sdk
+Now all of what I have mentioned are great but a key thing to make them work and be successful is to think about them as early as you can in the software development lifecycle. So in the below holistic testing model this would be in the left hand side.  
 
+![Holistic Testing Model](/assets/images/holistic-testing-model.png)
 
+When it comes to shifting right you need to be asking questions like:
 
-Figire 8
-
-
-you need to be asking the following types of questions.
-
- - What does success look like from a users perspective?
+ - What does success look like from a users perspective? How will we monitor that?
  - What do you want to monitor?
  - How are we going to monitor?
  - Why do we want to monitor?
- - who will monitor?
- - where will we monitor?
-
+ - Who will monitor?
+ - Will we manually monitor or will we get automated alerts
+ - What trends are we looking for
 
  ## Why is it key to a mature quality engineering culture?
 
- Shifting right is key to a mature quality engineering culture. Shifting right wih monitoring and observability is being proactive and mature processes are proactive. Reacting to issues creates stress, interepts teams flow if they have moved onto other peices of work and most importantly can tarnish a companies reputation if user find lots of bugs and issues.  
+ Shifting right is key to a mature quality engineering culture. Shifting right wih monitoring and observability is being proactive and mature processes are proactive. Reacting to issues creates stress, interepts teams flow if they have moved onto other pieces of work and most importantly can tarnish a companies reputation if user find lots of bugs and issues. 
